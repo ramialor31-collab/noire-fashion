@@ -60,20 +60,20 @@ export const Collection: React.FC<CollectionProps> = ({
                   layoutId={`product-image-${heroProduct.id}`}
                   src={heroProduct.images[0]}
                   alt={heroProduct.name}
-                  className="w-full h-full object-cover object-center filter contrast-110 brightness-95 transition-transform duration-700 group-hover:scale-105"
-                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full h-full object-cover object-center filter contrast-110 brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 />
               </div>
 
               {/* Coordinates Badge */}
               {heroProduct.coordinates && (
-                <div className="absolute top-5 left-5 px-3 py-1 bg-noir-950/85 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest text-noir-300">
+                <div className="absolute top-5 left-5 px-3 py-1 bg-noir-950/85 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest text-noir-300 pointer-events-none">
                   COORDINATES: {heroProduct.coordinates}
                 </div>
               )}
 
               {/* Status Badge */}
-              <div className="absolute top-5 right-5 px-3 py-1 bg-white text-noir-950 text-[10px] font-mono font-bold tracking-widest uppercase">
+              <div className="absolute top-5 right-5 px-3 py-1 bg-white text-noir-950 text-[10px] font-mono font-bold tracking-widest uppercase pointer-events-none">
                 {heroProduct.badge || 'FLAGSHIP PIECE'}
               </div>
 
@@ -96,7 +96,7 @@ export const Collection: React.FC<CollectionProps> = ({
                   <span className="text-[10px] text-noir-400 uppercase tracking-widest font-mono">FLAGSHIP LEATHER</span>
                   <p className="text-white font-mono text-base sm:text-lg font-bold">${heroProduct.price} USD</p>
                 </div>
-                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-noir-950 text-xs font-bold font-sans tracking-wider uppercase group-hover:bg-luxe-smoke transition-colors">
+                <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-noir-950 text-xs font-bold font-sans tracking-wider uppercase group-hover:bg-luxe-smoke transition-colors duration-200">
                   <Eye className="w-3.5 h-3.5" />
                   <span>INSPECT SPECIFICATIONS</span>
                 </div>
@@ -136,13 +136,13 @@ export const Collection: React.FC<CollectionProps> = ({
               <div className="pt-2 flex items-center gap-3 sm:gap-4">
                 <button
                   onClick={() => onSelectProduct(heroProduct)}
-                  className="flex-1 py-3.5 sm:py-4 bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase hover:bg-luxe-smoke transition-colors text-center"
+                  className="flex-1 py-3.5 sm:py-4 min-h-[44px] bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase hover:bg-luxe-smoke transition-all duration-200 active:scale-[0.99] text-center"
                 >
                   VIEW PRODUCT DETAIL
                 </button>
                 <button
                   onClick={() => addToCart(heroProduct, heroProduct.colors[0].name, heroProduct.sizes[1] || heroProduct.sizes[0], 1)}
-                  className="p-3.5 sm:p-4 border border-white/20 hover:border-white text-white transition-colors"
+                  className="p-3.5 sm:p-4 min-w-[44px] min-h-[44px] border border-white/20 hover:border-white text-white transition-all duration-200 active:scale-[0.97] flex items-center justify-center"
                   aria-label="Quick Add to Bag"
                   title="Quick Add to Bag"
                 >
@@ -173,7 +173,7 @@ export const Collection: React.FC<CollectionProps> = ({
                   idx % 2 === 1 ? 'md:translate-y-6 lg:translate-y-8' : ''
                 }`}
               >
-                {/* Visual Area with Shared Layout Animation */}
+                {/* Visual Area with Shared Layout Animation & 1.03 scale */}
                 <div 
                   onClick={() => onSelectProduct(product)}
                   className="relative aspect-[3/4] overflow-hidden bg-noir-900 border border-white/[0.08] cursor-pointer"
@@ -182,26 +182,26 @@ export const Collection: React.FC<CollectionProps> = ({
                     layoutId={`product-image-${product.id}`}
                     src={product.images[0]}
                     alt={product.name}
-                    className="w-full h-full object-cover object-center filter contrast-105 brightness-95 transition-all duration-700 group-hover:scale-105 group-hover:brightness-100"
-                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full h-full object-cover object-center filter contrast-105 brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                   />
 
-                  {/* Secondary Image hover reveal */}
+                  {/* Secondary Image hover reveal with matching 1.03 scale */}
                   {product.images[1] && (
                     <img
                       src={product.images[1]}
                       alt={`${product.name} alternate view`}
-                      className="absolute inset-0 w-full h-full object-cover object-center filter contrast-105 brightness-95 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                      className="absolute inset-0 w-full h-full object-cover object-center filter contrast-105 brightness-95 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out pointer-events-none group-hover:scale-[1.03]"
                     />
                   )}
 
                   {product.badge && (
-                    <div className="absolute top-3 left-3 px-2 py-0.5 bg-noir-950/85 backdrop-blur-md border border-white/10 text-[9px] font-mono tracking-wider text-noir-200 uppercase">
+                    <div className="absolute top-3 left-3 px-2 py-0.5 bg-noir-950/85 backdrop-blur-md border border-white/10 text-[9px] font-mono tracking-wider text-noir-200 uppercase pointer-events-none">
                       {product.badge}
                     </div>
                   )}
 
-                  {/* Quick Action Overlay */}
+                  {/* Quick Action Overlay with smooth spring reveal */}
                   <div className="absolute inset-0 bg-noir-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                     <span className="px-4 py-2 bg-white text-noir-950 text-[10px] font-mono font-bold tracking-widest uppercase shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       INSPECT PIECE
@@ -216,7 +216,7 @@ export const Collection: React.FC<CollectionProps> = ({
                   </span>
                   <h4 
                     onClick={() => onSelectProduct(product)}
-                    className="font-display font-semibold text-base sm:text-lg text-white mt-1 group-hover:text-luxe-smoke transition-colors cursor-pointer"
+                    className="font-display font-semibold text-base sm:text-lg text-white mt-1 group-hover:text-luxe-smoke transition-colors duration-200 cursor-pointer"
                   >
                     {product.name}
                   </h4>
@@ -226,7 +226,7 @@ export const Collection: React.FC<CollectionProps> = ({
                     </span>
                     <button
                       onClick={() => onSelectProduct(product)}
-                      className="text-xs text-noir-400 hover:text-white transition-colors flex items-center space-x-1"
+                      className="text-xs text-noir-400 hover:text-white transition-colors duration-200 flex items-center space-x-1 py-1"
                     >
                       <span className="font-mono text-[11px]">VIEW</span>
                       <ArrowRight className="w-3 h-3" />
@@ -250,7 +250,7 @@ export const Collection: React.FC<CollectionProps> = ({
           </div>
           <button
             onClick={onExploreShop}
-            className="inline-flex items-center space-x-3 px-8 py-3.5 bg-transparent border border-white text-white font-sans text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-noir-950 transition-all duration-300"
+            className="inline-flex items-center space-x-3 px-8 py-3.5 min-h-[44px] bg-transparent border border-white text-white font-sans text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-noir-950 transition-all duration-300 active:scale-[0.99]"
           >
             <span>VIEW ALL IN SHOP</span>
             <ArrowRight className="w-4 h-4" />
