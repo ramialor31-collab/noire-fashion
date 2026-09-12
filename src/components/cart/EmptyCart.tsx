@@ -20,7 +20,7 @@ export const EmptyCart: React.FC<EmptyCartProps> = ({ onBrowse }) => {
       </h3>
 
       <p className="text-xs text-noir-400 max-w-xs mt-2 font-light leading-relaxed">
-        The nocturnal archive awaits. Explore Collection 01 to discover engineered streetwear essentials.
+        Explore Collection 01 to discover heavyweight tees, sculpted hoodies, and tailored outerwear.
       </p>
 
       <button
@@ -30,7 +30,7 @@ export const EmptyCart: React.FC<EmptyCartProps> = ({ onBrowse }) => {
         }}
         className="mt-8 inline-flex items-center space-x-3 px-8 py-3.5 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors"
       >
-        <span>DISCOVER PIECES</span>
+        <span>EXPLORE COLLECTION</span>
         <ArrowRight className="w-3.5 h-3.5" />
       </button>
     </div>

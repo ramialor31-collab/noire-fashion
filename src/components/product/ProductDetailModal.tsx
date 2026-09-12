@@ -104,12 +104,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       {product.badge}
                     </div>
                   )}
-
-                  {product.coordinates && (
-                    <div className="absolute bottom-4 left-4 px-3 py-1 bg-noir-950/90 backdrop-blur-md border border-white/15 text-[9px] font-mono tracking-wider text-noir-300 pointer-events-none">
-                      ATELIER: {product.coordinates}
-                    </div>
-                  )}
                 </div>
 
                 {/* Thumbnail Selection Rail */}
@@ -148,7 +142,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                   {/* 1. Category & Edition Meta */}
                   <div className="flex items-center justify-between text-xs font-mono text-noir-400 uppercase tracking-widest">
                     <span>{product.category}</span>
-                    <span className="text-noir-500">SERIES 01 // 2026</span>
+                    <span className="text-noir-500">COLLECTION 01</span>
                   </div>
 
                   {/* 2. Product Name */}
@@ -177,11 +171,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                   {/* 5. Purchase Area Console */}
                   <div className="mt-6 pt-5 border-t border-white/[0.08] space-y-5">
                     
-                    {/* Tone / Color Selector */}
+                    {/* Color Selector */}
                     <div>
                       <div className="flex items-center justify-between text-xs font-mono mb-2">
                         <span className="text-noir-400 uppercase tracking-wider">
-                          TONE: <strong className="text-white font-medium">{selectedColor}</strong>
+                          COLOR: <strong className="text-white font-medium">{selectedColor}</strong>
                         </span>
                       </div>
                       <div className="flex items-center space-x-2.5">
@@ -196,7 +190,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                                   ? 'border-white bg-white/10 text-white ring-1 ring-white/40'
                                   : 'border-white/15 text-noir-400 hover:border-white/40 hover:text-noir-200'
                               }`}
-                              aria-label={`Select tone ${c.name}`}
+                              aria-label={`Select color ${c.name}`}
                             >
                               <span
                                 className="w-3.5 h-3.5 rounded-full border border-white/30 shrink-0"
@@ -213,13 +207,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                     <div>
                       <div className="flex items-center justify-between text-xs font-mono mb-2">
                         <span className="text-noir-400 uppercase tracking-wider">
-                          SIZE ARCHITECTURE: <strong className="text-white font-medium">{selectedSize}</strong>
+                          SIZE: <strong className="text-white font-medium">{selectedSize}</strong>
                         </span>
                         <button
                           onClick={() => setIsSizeGuideOpen(true)}
                           className="text-noir-300 hover:text-white underline text-[11px] font-mono tracking-wider transition-colors"
                         >
-                          MEASUREMENTS
+                          SIZE GUIDE
                         </button>
                       </div>
                       <div className="grid grid-cols-5 gap-2">
@@ -295,7 +289,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       </span>
                       <span className="flex items-center space-x-1.5">
                         <ShieldCheck className="w-3.5 h-3.5 text-noir-300" />
-                        <span>Authentic Atelier Guarantee</span>
+                        <span>Authenticity Guarantee</span>
                       </span>
                     </div>
 
@@ -314,7 +308,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       >
                         <span className="flex items-center space-x-2">
                           <Sparkles className="w-3 h-3 text-luxe-gold" />
-                          <span>MATERIAL & TEXTILE WEIGHT</span>
+                          <span>MATERIAL & FABRIC</span>
                         </span>
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'material' ? 'rotate-180 text-white' : ''}`} />
                       </button>
@@ -333,7 +327,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         onClick={() => toggleAccordion('fit')}
                         className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
                       >
-                        <span>SILHOUETTE & FIT PROPORTIONS</span>
+                        <span>FIT & SIZING</span>
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'fit' ? 'rotate-180 text-white' : ''}`} />
                       </button>
                       {openAccordion === 'fit' && (
@@ -352,15 +346,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         onClick={() => toggleAccordion('origin')}
                         className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
                       >
-                        <span>PROVENANCE & CRAFT ORIGIN</span>
+                        <span>ORIGIN</span>
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'origin' ? 'rotate-180 text-white' : ''}`} />
                       </button>
                       {openAccordion === 'origin' && (
                         <div className="pt-2 text-noir-300 font-light space-y-1 text-xs leading-relaxed">
                           <p>{product.details.origin}</p>
-                          {product.coordinates && (
-                            <p className="text-[11px] font-mono text-noir-500">Geographic Coordinates: {product.coordinates}</p>
-                          )}
                         </div>
                       )}
                     </div>
@@ -373,7 +364,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         onClick={() => toggleAccordion('care')}
                         className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
                       >
-                        <span>GARMENT PRESERVATION & CARE</span>
+                        <span>CARE INSTRUCTIONS</span>
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'care' ? 'rotate-180 text-white' : ''}`} />
                       </button>
                       {openAccordion === 'care' && (
@@ -390,13 +381,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       onClick={() => toggleAccordion('shipping')}
                       className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
                     >
-                      <span>DELIVERY & RETURN PRIVILEGE</span>
+                      <span>SHIPPING & RETURNS</span>
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'shipping' ? 'rotate-180 text-white' : ''}`} />
                     </button>
                     {openAccordion === 'shipping' && (
                       <div className="pt-2 text-noir-300 font-light leading-relaxed space-y-1 text-xs">
-                        <p>Orders ship carbon-neutral via DHL Express from Paris or Tokyo Central Atelier.</p>
-                        <p>14-day complimentary returns on all unworn items with original security seals intact.</p>
+                        <p>Orders ship via DHL Express. Dispatched within 24 hours with full tracking.</p>
+                        <p>14-day complimentary returns on all unworn items with original tags intact.</p>
                       </div>
                     )}
                   </div>

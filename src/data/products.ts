@@ -9,7 +9,7 @@ export const PRODUCTS: Product[] = [
     category: 'TEES',
     badge: 'CORE ESSENTIAL',
     tagline: 'Engineered with a dense 320GSM comb-spun cotton with an architectural dropped shoulder.',
-    description: 'Cut from high-density, custom-milled Portuguese jersey, the Heavyweight Boxy Tee redefines the foundation of modern streetwear. Finished with a garment-dyed wash for a subtle, weathered depth and reinforced twin-needle stitching built to endure night after night.',
+    description: 'Cut from high-density, custom-milled Portuguese jersey, the Heavyweight Boxy Tee features an architectural dropped shoulder, structured collar ribbing, and reinforced twin-needle stitching built for lasting shape retention.',
     details: {
       material: '100% Organic 320GSM Portuguese Combed Cotton',
       fit: 'Oversized boxy cut. Dropped shoulder. Box-stitch collar.',
@@ -28,8 +28,6 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&q=80&w=1200',
     ],
     featured: true,
-    editorialQuote: 'Subtle weight. Absolute presence.',
-    coordinates: '38°43\'12.2"N 9°08\'21.0"W'
   },
   {
     id: 'prod_02',
@@ -39,7 +37,7 @@ export const PRODUCTS: Product[] = [
     category: 'TEES',
     badge: 'LIMITED RUN',
     tagline: 'Vintage garment-washed with micro-distressed hems and tonal screenprint lettering.',
-    description: 'Inspired by brutalist nightlife ephemera, this piece features high-density water-based typography across the reverse spine, hand-buffed collar distressing, and a relaxed drape designed for layering underneath tailored outerwear.',
+    description: 'Constructed from heavy 280GSM combed cotton with hand-buffed collar distressing, a relaxed vintage silhouette, and tonal water-based typography across the reverse spine.',
     details: {
       material: '100% Heavy Combed Cotton 280GSM with hand distressing',
       fit: 'Relaxed vintage silhouette. Lengthened body.',
@@ -56,7 +54,6 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&q=80&w=1200',
     ],
     featured: false,
-    editorialQuote: 'Visible scars of the nocturnal hours.',
   },
   {
     id: 'prod_03',
@@ -65,9 +62,9 @@ export const PRODUCTS: Product[] = [
     price: 320,
     originalPrice: 360,
     category: 'HOODIES',
-    badge: 'RUNWAY 01',
+    badge: 'HEAVYWEIGHT TERRY',
     tagline: 'Double-faced heavyweight French terry with structured hood geometry and concealed seams.',
-    description: 'Engineered to stand upright without drawstring clutter. The Noir 520GSM Hoodie features deep raglan sleeves, zero exterior branding, and ultra-dense custom ribbing that holds its sculpture across multiple years of wear.',
+    description: 'Constructed from double-faced 520GSM French terry with an upright hood that stands without drawstrings. Features deep raglan sleeves, a clean exterior with zero visible branding, and dense custom ribbing that maintains structure over continuous wear.',
     details: {
       material: '100% Custom 520GSM French Terry Cotton',
       fit: 'Sculpted oversized fit with tapered hem ribbing.',
@@ -75,7 +72,7 @@ export const PRODUCTS: Product[] = [
       care: 'Dry clean recommended, or hand wash cold flat dry.',
     },
     colors: [
-      { name: 'Obsidian Noir', hex: '#050505', inStock: true },
+      { name: 'Deep Black', hex: '#050505', inStock: true },
       { name: 'Dark Slate', hex: '#1F2421', inStock: true },
     ],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
@@ -85,8 +82,6 @@ export const PRODUCTS: Product[] = [
       '/images/products/hoodie-520gsm-flat.jpg',
     ],
     featured: true,
-    editorialQuote: 'A sanctuary in fabric. Total insulation from the noise.',
-    coordinates: '41°26\'38.4"N 8°17\'34.8"W'
   },
   {
     id: 'prod_04',
@@ -96,11 +91,11 @@ export const PRODUCTS: Product[] = [
     category: 'HOODIES',
     badge: 'BESTSELLER',
     tagline: 'Two-way gunmetal YKK Excella zippers with raw-frayed hem accents and thumbhole cuffs.',
-    description: 'Designed for modular layering. Features a dual two-way zipper system allowing asymmetrical split styling, an elongated double-layer hood, and micro-ribbed cuffs with integrated thumb slits for cold night commutes.',
+    description: 'Cut from 480GSM diagonal loopback cotton for modular layering. Features a two-way gunmetal YKK Excella zipper system for split styling, an elongated double-layer hood, and micro-ribbed cuffs with integrated thumb slits.',
     details: {
       material: '480GSM Diagonal Loopback Cotton',
       fit: 'Relaxed elongated cut. Dual zip closure.',
-      origin: 'Tokyo Atelier, Japan',
+      origin: 'Tokyo, Japan',
       care: 'Delicate cycle with zip closed. Lay flat to dry.',
     },
     colors: [
@@ -113,7 +108,6 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=1200',
     ],
     featured: false,
-    editorialQuote: 'Engineered versatility for fluid movement.',
   },
   {
     id: 'prod_05',
@@ -121,9 +115,9 @@ export const PRODUCTS: Product[] = [
     slug: 'signal-technical-boxy-overshirt',
     price: 380,
     category: 'OVERSHIRTS',
-    badge: 'INNOVATION',
+    badge: 'TECHNICAL NYLON',
     tagline: 'Water-repellent Japanese ripstop nylon with dual magnetic storm pockets and cobrax snaps.',
-    description: 'Bridging technical outerwear and tailored shirting. Crafted from high-tenacity matte micro-ripstop with a subtle crisp texture, hidden magnet closures on the chest bellows, and internal carry webbing.',
+    description: 'A technical overshirt cut from Japanese matte micro-ripstop with a water-repellent finish. Built with dual chest bellows pockets featuring concealed magnetic closures, Cobrax snap front fastening, and internal carry webbing.',
     details: {
       material: '82% Japanese Micro-Ripstop Nylon, 18% Elastane with DWR',
       fit: 'Square boxy cut. Designed to be worn over tees and hoodies.',
@@ -140,8 +134,6 @@ export const PRODUCTS: Product[] = [
       '/images/products/overshirt-signal-detail.jpg',
     ],
     featured: true,
-    editorialQuote: 'Tactile rigidity meets effortless lightness.',
-    coordinates: '34°41\'37.5"N 135°30\'07.6"E'
   },
   {
     id: 'prod_06',
@@ -149,9 +141,9 @@ export const PRODUCTS: Product[] = [
     slug: 'nocturne-boiled-wool-overshirt',
     price: 420,
     category: 'OVERSHIRTS',
-    badge: 'LIMITED ARCHIVE',
+    badge: 'BOILED WOOL',
     tagline: 'Pure virgin boiled wool with cupro lining and horn button hardware.',
-    description: 'A heavyweight transitional piece engineered for sub-zero city temperatures. Sourced from heritage mills in Biella, Italy, with an ultra-dense textured surface that naturally sheds light precipitation.',
+    description: 'A heavy transitional overshirt cut from 440GSM virgin boiled wool from Biella, Italy, with a dense tactile surface. Fully lined in cupro and finished with natural horn buttons.',
     details: {
       material: '100% Virgin Boiled Wool (440GSM), 100% Cupro lining',
       fit: 'Structured tailored overshirt cut. Slightly dropped shoulder.',
@@ -168,7 +160,6 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=1200',
     ],
     featured: false,
-    editorialQuote: 'Heritage Italian craftsmanship for nocturnal urbanites.',
   },
   {
     id: 'prod_07',
@@ -176,9 +167,9 @@ export const PRODUCTS: Product[] = [
     slug: 'shadow-asymmetrical-cargo-trousers',
     price: 360,
     category: 'PANTS',
-    badge: 'EXCLUSIVE',
+    badge: 'CORDURA TWILL',
     tagline: 'Multi-gusseted articulated leg silhouette with concealed fidlock cargo chambers.',
-    description: 'Combining functional utility with avant-garde tailoring. Deep knee darts provide maximum mobility while seated or striding. Features concealed zip-expandable ankle cuffs to drape seamlessly over boots or low-profile sneakers.',
+    description: 'Cut from heavyweight cotton twill reinforced with Cordura nylon. Features articulated knee darts for mobility, low-profile asymmetrical cargo pockets with concealed magnetic closures, and adjustable tension cuffs that break cleanly over footwear.',
     details: {
       material: '65% Heavyweight Cotton Twill, 35% Cordura Nylon',
       fit: 'Relaxed tapered leg with adjustable tension cuffs.',
@@ -195,8 +186,6 @@ export const PRODUCTS: Product[] = [
       '/images/products/pants-cargo-detail.jpg',
     ],
     featured: true,
-    editorialQuote: 'Sculpted volume. Relentless utility.',
-    coordinates: '37°32\'45.6"N 126°59\'20.4"E'
   },
   {
     id: 'prod_08',
@@ -204,9 +193,9 @@ export const PRODUCTS: Product[] = [
     slug: 'nocturne-double-pleated-wide-trousers',
     price: 390,
     category: 'PANTS',
-    badge: 'EDITORIAL PICK',
+    badge: 'TAILORED WOOL',
     tagline: 'High-waisted architectural trousers featuring dramatic forward pleats and fluid drape.',
-    description: 'A contemporary masterwork in fluid tailoring. Crafted from a high-twist tropical wool blend that holds its sharp pressed crease while walking. Features internal waist side adjusters eliminating the necessity of a belt.',
+    description: 'Tailored from a high-twist tropical wool blend that holds a sharp pressed crease while walking. Features a high-waisted cut with deep forward pleats and internal side adjusters for a clean, belt-free waistband.',
     details: {
       material: '70% High-Twist Wool, 30% Silk-Touch Viscose',
       fit: 'Wide straight leg with generous hem break.',
@@ -223,7 +212,6 @@ export const PRODUCTS: Product[] = [
       '/images/products/pants-wide-detail.jpg',
     ],
     featured: false,
-    editorialQuote: 'Elegance without concession.',
   },
   {
     id: 'prod_09',
@@ -232,9 +220,9 @@ export const PRODUCTS: Product[] = [
     price: 680,
     originalPrice: 750,
     category: 'JACKETS',
-    badge: 'HERO PIECE',
+    badge: 'WAXED LEATHER',
     tagline: 'Hand-waxed vegetable-tanned lambskin with exaggerated dropped shoulders and custom matte hardware.',
-    description: 'The definitive outerwear statement of NOIRÉ Collection 01. Cut from supple full-grain lambskin treated with artisanal natural beeswax, developing a unique personal patina over time. Finished with an insulated quilted satin lining and reinforced collar webbing.',
+    description: 'Cut from supple full-grain Italian lambskin treated with natural beeswax, developing a unique personal patina over time. Designed with exaggerated dropped shoulders, a cropped boxy bomber silhouette, an insulated quilted cupro lining, and heavy matte hardware.',
     details: {
       material: '100% Italian Vegetable-Tanned Lambskin, 100% Cupro Quilted Lining',
       fit: 'Cropped boxy bomber silhouette with oversized sleeve volume.',
@@ -242,7 +230,7 @@ export const PRODUCTS: Product[] = [
       care: 'Specialist leather care only.',
     },
     colors: [
-      { name: 'Raw Obsidian', hex: '#0A0A0A', inStock: true },
+      { name: 'Waxed Black', hex: '#0A0A0A', inStock: true },
     ],
     sizes: ['S', 'M', 'L', 'XL'],
     images: [
@@ -251,8 +239,6 @@ export const PRODUCTS: Product[] = [
       '/images/products/bomber-waxed-detail.jpg',
     ],
     featured: true,
-    editorialQuote: 'The crown jewel of nocturnal armour.',
-    coordinates: '43°46\'18.5"N 11°15\'13.2"E'
   },
   {
     id: 'prod_10',
@@ -260,9 +246,9 @@ export const PRODUCTS: Product[] = [
     slug: 'monolith-technical-storm-trench',
     price: 720,
     category: 'JACKETS',
-    badge: 'RUNWAY 01',
+    badge: '3-LAYER WATERPROOF',
     tagline: '3-layer bonded waterproof membrane with taped seams and modular storm hood.',
-    description: 'A formidable full-length shield engineered against relentless downpours and cold drafts. Features magnetic storm flap fastening, internal shoulder sling harness for hands-free carry when indoors, and laser-cut underarm breath vents.',
+    description: 'A full-length technical trench coat constructed from a 3-layer waterproof and breathable bonded nylon membrane with fully taped seams. Features magnetic storm flap closures, an internal shoulder carry harness, and laser-cut underarm breath vents.',
     details: {
       material: '3-Layer 20,000mm Waterproof / 15,000g Breathable Bonded Nylon',
       fit: 'Oversized floor-length dramatic drape.',
@@ -279,7 +265,6 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=1200',
     ],
     featured: false,
-    editorialQuote: 'Architectural protection for the modern wanderer.',
   },
   {
     id: 'prod_11',
@@ -287,9 +272,9 @@ export const PRODUCTS: Product[] = [
     slug: 'monochrome-structured-nylon-cap',
     price: 110,
     category: 'ACCESSORIES',
-    badge: 'ESSENTIAL',
+    badge: 'TASLAN NYLON',
     tagline: 'Matte water-resistant taslan nylon with laser-engraved zinc buckle closure.',
-    description: 'Unstructured six-panel profile crafted from whisper-quiet Japanese taslan nylon. Features an anti-glare underbrim, embroidered tonal eyelets, and an interior moisture-wicking sweatband.',
+    description: 'An unstructured six-panel profile crafted from Japanese taslan nylon with a water-resistant finish. Features an anti-glare underbrim, embroidered tonal eyelets, an interior moisture-wicking sweatband, and an adjustable strap with brushed zinc buckle.',
     details: {
       material: '100% Japanese Taslan Nylon, Brushed Zinc Hardware',
       fit: 'Low profile crown. Adjustable strap (one size fits all).',
@@ -306,7 +291,6 @@ export const PRODUCTS: Product[] = [
       'https://images.unsplash.com/photo-1534215754734-18e55d13e346?auto=format&fit=crop&q=80&w=1200',
     ],
     featured: false,
-    editorialQuote: 'Subtle silhouette. Relentless performance.',
   },
   {
     id: 'prod_12',
@@ -314,9 +298,9 @@ export const PRODUCTS: Product[] = [
     slug: 'hardware-modular-leather-crossbody',
     price: 290,
     category: 'ACCESSORIES',
-    badge: 'LIMITED RESTOCK',
+    badge: 'MODULAR LEATHER',
     tagline: 'Full-grain calfskin with tactical quick-release aluminum cobra buckle.',
-    description: 'A compact modular sling engineered for essential everyday items (phone, cards, passport, keys). Features waterproof taped YKK zips, padded back mesh, and detachable strap configurations to wear across chest, shoulder, or waist.',
+    description: 'A compact modular sling engineered for essential everyday items. Built from full-grain Italian calfskin with waterproof taped YKK zippers, padded back mesh, an aluminum quick-release cobra buckle, and detachable strap configurations.',
     details: {
       material: 'Full-Grain Italian Calfskin, Mil-Spec Aluminum Hardware',
       fit: 'Dimension: 22cm x 14cm x 6cm. Adjustable 120cm strap.',
@@ -332,7 +316,5 @@ export const PRODUCTS: Product[] = [
       '/images/products/crossbody-leather-worn.jpg',
     ],
     featured: true,
-    editorialQuote: 'Industrial precision engineered into fine leathercraft.',
-    coordinates: '45°28\'01.2"N 9°11\'23.6"E'
   },
 ];

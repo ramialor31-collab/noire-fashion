@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               NOIRÉ
             </span>
             <p className="text-xs text-noir-400 max-w-sm font-light leading-relaxed">
-              BUILT FOR THE AFTER HOURS. Contemporary luxury streetwear designed for those who move differently. Architectural drape, heavyweight textiles, and nocturnal presence.
+              BUILT FOR THE AFTER HOURS. Contemporary luxury streetwear constructed with heavyweight custom textiles and architectural silhouettes.
             </p>
             <div className="flex items-center space-x-2 text-[10px] font-mono text-noir-500 uppercase">
               <span>PARIS</span>
@@ -68,12 +68,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </span>
             <div>
               <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
-                CONCIERGE
+                CLIENT SERVICES
               </button>
             </div>
             <div>
               <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
-                PRIVATE VIP DROP
+                RELEASE UPDATES
               </button>
             </div>
             <div>
@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
         {/* Massive Watermark Signature */}
         <div className="border-t border-white/[0.06] pt-12 pb-6 overflow-hidden">
           <span className="font-display font-extrabold text-7xl sm:text-9xl lg:text-[14rem] tracking-[-0.07em] leading-none text-white/[0.03] select-none block text-center whitespace-nowrap">
-            NOIRÉ ATELIER
+            NOIRÉ
           </span>
         </div>
 
@@ -121,7 +121,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <p>© {new Date().getFullYear()} NOIRÉ. ALL RIGHTS RESERVED. FICTIONAL PORTFOLIO SHOWCASE.</p>
           <div className="flex items-center space-x-6">
             <span className="hover:text-noir-300 cursor-pointer">PRIVACY POLICY</span>
-            <span className="hover:text-noir-300 cursor-pointer">TERMS OF ATELIER</span>
+            <span className="hover:text-noir-300 cursor-pointer">TERMS OF SERVICE</span>
             <span className="hover:text-noir-300 cursor-pointer">COOKIE PREFERENCES</span>
           </div>
         </div>

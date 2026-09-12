@@ -49,7 +49,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         </h2>
 
         <p className="text-sm text-noir-300 mt-2 font-light">
-          Thank you for choosing NOIRÉ. Your nocturnal wardrobe has been registered.
+          Thank you for your order. A confirmation email and tracking details have been sent.
         </p>
 
         <div className="mt-4 inline-flex items-center space-x-2 px-4 py-1.5 bg-noir-850 border border-white/10 rounded-xs">
@@ -86,7 +86,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
       {/* Purchased Items Itemized List */}
       <div className="py-6 border-b border-white/[0.08]">
         <h4 className="text-[10px] font-mono tracking-widest text-noir-400 uppercase mb-4">
-          ACQUIRED ITEMS ({data.items.length})
+          ORDER ITEMS ({data.items.length})
         </h4>
 
         <div className="space-y-3">
@@ -148,7 +148,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         onClick={onContinueShopping}
         className="w-full py-4 bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase hover:bg-luxe-smoke transition-all duration-300 flex items-center justify-center space-x-2 shadow-xl"
       >
-        <span>RETURN TO COLLECTION</span>
+        <span>CONTINUE SHOPPING</span>
         <ArrowRight className="w-4 h-4" />
       </button>
     </div>

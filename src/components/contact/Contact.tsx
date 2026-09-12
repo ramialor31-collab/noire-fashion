@@ -18,20 +18,20 @@ export const Contact: React.FC = () => {
 
   const faqs = [
     {
-      q: 'WHERE ARE NOIRÉ SILHOUETTES CRAFTED?',
-      a: 'All NOIRÉ pieces are constructed across specialist artisan ateliers in Portugal, Italy, and Japan utilizing custom-milled organic textiles and bespoke hardware.',
+      q: 'WHERE ARE NOIRÉ GARMENTS PRODUCED?',
+      a: 'NOIRÉ garments are manufactured with partner production facilities in Portugal, Italy, and Japan using custom-milled textiles and bespoke hardware.',
     },
     {
-      q: 'HOW DOES NOIRÉ SIZING DRAPE?',
-      a: 'Garments are engineered with an intentional boxy, dropped-shoulder silhouette. Order your standard size for an oversized runway drape, or size down for a conventional fit.',
+      q: 'HOW DOES NOIRÉ SIZING FIT?',
+      a: 'Garments feature an intentional relaxed, dropped-shoulder cut. Order your standard size for an oversized fit, or size down for a closer fit.',
     },
     {
-      q: 'WHAT ARE THE SHIPPING TERMS?',
-      a: 'We provide complimentary carbon-neutral DHL Express delivery globally on all orders over $300 USD. Orders are dispatched within 24 hours from Paris or Tokyo.',
+      q: 'WHAT ARE THE SHIPPING OPTIONS?',
+      a: 'We provide complimentary DHL Express shipping on orders over $300 USD. All orders are dispatched within 24 hours with full tracking.',
     },
     {
-      q: 'WHAT IS YOUR RETURN WINDOW?',
-      a: 'We offer a 14-day return privilege on all unworn garments with original atelier security seals intact. Pre-paid return labels are included in every shipment.',
+      q: 'WHAT IS YOUR RETURN POLICY?',
+      a: 'We offer a 14-day return window on all unworn items with original tags intact. Pre-paid return labels are included with every shipment.',
     },
   ];
 
@@ -42,7 +42,7 @@ export const Contact: React.FC = () => {
         {/* Section Header Meta */}
         <div className="flex items-center space-x-3 mb-8">
           <span className="text-[10px] tracking-widest text-noir-400 font-mono uppercase">
-            SCENE 05 // PRIVATE CONCIERGE
+            CLIENT SERVICES
           </span>
           <span className="w-8 h-[1px] bg-noir-800" />
         </div>
@@ -69,21 +69,21 @@ export const Contact: React.FC = () => {
             <div className="p-6 sm:p-8 bg-noir-900 border border-white/10 rounded-xs">
               <div className="flex items-center space-x-2 text-luxe-gold text-xs font-mono mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>PRIVATE DROP NOTIFICATIONS</span>
+                <span>NEWSLETTER & RELEASES</span>
               </div>
 
               <h3 className="font-display text-2xl font-bold text-white">
-                THE NOCTURNE CIPHER
+                RELEASE NOTIFICATIONS
               </h3>
 
               <p className="text-xs text-noir-300 font-light mt-2 leading-relaxed">
-                Receive confidential release keys for unannounced capsule drops, archive restocks, and private showroom viewings in Paris and Tokyo.
+                Subscribe for early access to seasonal collections, private restocks, and release announcements.
               </p>
 
               {vipSuccess ? (
                 <div className="mt-6 p-4 bg-emerald-950/40 border border-emerald-500/30 text-emerald-300 text-xs font-mono flex items-center space-x-2">
                   <Check className="w-4 h-4" />
-                  <span>CIPHER REGISTERED. WELCOME TO NOIRÉ.</span>
+                  <span>ACCESS CONFIRMED. WELCOME TO NOIRÉ.</span>
                 </div>
               ) : (
                 <form onSubmit={handleVipSubmit} className="mt-6 flex flex-col sm:flex-row gap-2">
@@ -99,7 +99,7 @@ export const Contact: React.FC = () => {
                     type="submit"
                     className="px-6 py-3 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors whitespace-nowrap"
                   >
-                    REQUEST ACCESS
+                    SUBSCRIBE
                   </button>
                 </form>
               )}
@@ -110,10 +110,10 @@ export const Contact: React.FC = () => {
               <div className="p-4 bg-noir-900/60 border border-white/[0.06] rounded-xs">
                 <div className="flex items-center space-x-2 text-noir-500 text-[10px] uppercase mb-1">
                   <Mail className="w-3.5 h-3.5" />
-                  <span>CLIENT CONCIERGE</span>
+                  <span>CLIENT SERVICES</span>
                 </div>
-                <a href="mailto:concierge@atelier-noire.com" className="text-white hover:underline block text-xs">
-                  concierge@atelier-noire.com
+                <a href="mailto:client@noire-studio.com" className="text-white hover:underline block text-xs">
+                  client@noire-studio.com
                 </a>
               </div>
 
@@ -124,10 +124,10 @@ export const Contact: React.FC = () => {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                   </svg>
-                  <span>VISUAL DISPATCHES</span>
+                  <span>EDITORIAL</span>
                 </div>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white hover:underline block text-xs">
-                  @atelier.noire
+                  @noire.studio
                 </a>
               </div>
             </div>
@@ -136,7 +136,7 @@ export const Contact: React.FC = () => {
           {/* Right: Minimal FAQ Accordion */}
           <div className="lg:col-span-6 space-y-6">
             <span className="text-xs font-mono tracking-widest text-noir-400 uppercase block">
-              ATELIER INQUIRIES & SERVICES
+              FREQUENTLY ASKED QUESTIONS
             </span>
 
             <div className="divide-y divide-white/[0.08] border-y border-white/[0.08]">

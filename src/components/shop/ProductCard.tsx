@@ -73,7 +73,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
         {/* Sale Tag if original price present */}
         {product.originalPrice && (
           <div className="absolute top-3 right-3 px-2 py-0.5 bg-luxe-crimson/90 text-white text-[9px] font-mono font-bold tracking-wider pointer-events-none">
-            ARCHIVE SALE
+            SALE
           </div>
         )}
 
@@ -107,8 +107,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
               onSelect(product);
             }}
             className="p-3 min-w-[42px] min-h-[42px] bg-noir-900/90 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-noir-950 transition-colors duration-200 active:scale-[0.96] flex items-center justify-center"
-            title="Inspect Details"
-            aria-label={`Inspect ${product.name}`}
+            title="View Details"
+            aria-label={`View ${product.name}`}
           >
             <Eye className="w-3.5 h-3.5" />
           </button>
@@ -139,7 +139,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
           {/* Spotlight Extra Details */}
           {isSpotlight && product.details && (
             <div className="mt-4 pt-3 border-t border-white/[0.06] text-xs font-mono text-noir-400 hidden sm:block">
-              <span className="text-noir-500 uppercase text-[10px] block tracking-wider">CRAFT & TEXTILE</span>
+              <span className="text-noir-500 uppercase text-[10px] block tracking-wider">MATERIAL & FABRIC</span>
               <p className="text-noir-200 mt-0.5">{product.details.material}</p>
             </div>
           )}

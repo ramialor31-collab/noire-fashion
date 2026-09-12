@@ -22,14 +22,14 @@ export const SizeGuideModal: React.FC<SizeGuideModalProps> = ({ isOpen, onClose 
           className="relative w-full max-w-lg bg-noir-900 border border-white/10 p-6 md:p-8 rounded-sm shadow-2xl z-10"
         >
           <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
-            <span className="font-display text-xl font-bold text-white">SIZE ARCHITECTURE</span>
+            <span className="font-display text-xl font-bold text-white">SIZE GUIDE</span>
             <button onClick={onClose} className="text-noir-400 hover:text-white transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
 
           <p className="text-xs text-noir-300 my-4 font-light leading-relaxed">
-            All NOIRÉ silhouettes are intentionally engineered with a boxy, dropped-shoulder drape. Take your standard size for an oversized runway aesthetic, or one size down for a conventional fitted look.
+            All NOIRÉ garments are designed with a relaxed, dropped-shoulder silhouette. Take your standard size for an oversized fit, or one size down for a closer fit.
           </p>
 
           <div className="overflow-x-auto">
@@ -82,7 +82,7 @@ export const SizeGuideModal: React.FC<SizeGuideModalProps> = ({ isOpen, onClose 
               onClick={onClose}
               className="px-6 py-2 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke"
             >
-              UNDERSTOOD
+              CLOSE
             </button>
           </div>
         </motion.div>

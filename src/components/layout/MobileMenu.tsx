@@ -101,8 +101,8 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       {/* Footer Details */}
       <div className="border-t border-white/[0.08] pt-6 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-noir-400 gap-4">
         <div>
-          <p className="tracking-widest uppercase text-noir-300 font-mono text-[11px]">DROP 24 // AUTUMN-WINTER</p>
-          <p className="text-[10px] font-mono text-noir-500">ALL PIECES LIMITED RUN</p>
+          <p className="tracking-widest uppercase text-noir-300 font-mono text-[11px]">COLLECTION 01 // 2026</p>
+          <p className="text-[10px] font-mono text-noir-500">PARIS • TOKYO • NEW YORK</p>
         </div>
         <div className="flex items-center space-x-6">
           <a

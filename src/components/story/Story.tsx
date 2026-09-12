@@ -13,7 +13,7 @@ export const Story: React.FC = () => {
         {/* Section Header Meta */}
         <div className="flex items-center space-x-3 mb-10">
           <span className="text-[10px] tracking-widest text-noir-400 font-mono uppercase">
-            SCENE 04 // VISUAL MANIFESTO
+            BRAND MANIFESTO
           </span>
           <span className="w-8 h-[1px] bg-noir-800" />
         </div>
@@ -42,7 +42,7 @@ export const Story: React.FC = () => {
       <div className="relative w-full aspect-[21/9] sm:aspect-[2.4/1] my-16 md:my-24 overflow-hidden border-y border-white/10 bg-noir-900 group">
         <img
           src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=85&w=2400"
-          alt="NOIRÉ Atelier Atmosphere"
+          alt="NOIRÉ Studio Atmosphere"
           className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 transition-transform duration-1000 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-transparent to-noir-950" />
@@ -51,10 +51,10 @@ export const Story: React.FC = () => {
         {/* Panoramic Text Overlay */}
         <div className="absolute bottom-6 left-6 md:left-12 max-w-lg">
           <span className="text-[10px] font-mono tracking-widest text-noir-400 uppercase block">
-            PARIS ATELIER // 03:42 AM
+            NOIRÉ STUDIO // DESIGN PROCESS
           </span>
           <p className="font-display text-lg sm:text-xl font-bold text-white mt-1">
-            Where convention fades and architecture meets movement.
+            Where architectural cuts meet functional daily movement.
           </p>
         </div>
       </div>
@@ -78,10 +78,10 @@ export const Story: React.FC = () => {
 
           <div className="lg:col-span-5 space-y-4 pt-2">
             <p className="text-xs sm:text-sm md:text-base text-noir-300 font-light leading-relaxed">
-              We engineer garments for the fluid transitions of nocturnal urban life. Dropped shoulders allow unrestricted arm swing; deep articulated knee pleats provide natural stride volume without friction.
+              We design garments for movement and daily transition. Dropped shoulders allow unrestricted reach; articulated knee pleats provide natural stride volume without tension.
             </p>
             <p className="text-xs sm:text-sm text-noir-400 font-light leading-relaxed font-mono">
-              Tested across damp European winter pavements and midnight Tokyo transit.
+              Constructed with reinforced seams, dense custom weaves, and balanced proportions.
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ export const Story: React.FC = () => {
           <div className="space-y-3">
             <span className="text-xs font-mono text-noir-500 block">02 // SUBSTANCE</span>
             <h4 className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              DENSE MATRICES.
+              HEAVYWEIGHT TEXTILES.
             </h4>
             <p className="text-xs text-noir-400 font-light leading-relaxed">
               Custom 480–520GSM Portuguese terry, Japanese micro-ripstop, and full-grain lambskin treated with natural beeswax.
@@ -115,7 +115,7 @@ export const Story: React.FC = () => {
               MORE PRESENCE.
             </h4>
             <p className="text-xs text-noir-400 font-light leading-relaxed">
-              Constructed to patina and deepen with continuous wear, standing resolute season after season.
+              Constructed to soften and deepen with continuous wear, retaining shape season after season.
             </p>
           </div>
 

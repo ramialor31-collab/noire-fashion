@@ -71,7 +71,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
           <div>
             <div className="flex items-center space-x-3 mb-3">
               <span className="text-[10px] tracking-widest text-noir-400 font-mono uppercase">
-                SCENE 03 // FULL STORE ARCHIVE
+                CATALOG // ALL PIECES
               </span>
               <span className="w-8 h-[1px] bg-noir-800" />
             </div>
@@ -80,7 +80,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
             </h2>
           </div>
           <div className="text-right font-mono text-xs text-noir-400">
-            SHOWING <span className="text-white font-bold">{filteredProducts.length}</span> OF {products.length} ESSENTIALS
+            SHOWING <span className="text-white font-bold">{filteredProducts.length}</span> OF {products.length} PIECES
           </div>
         </div>
 
@@ -123,7 +123,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
                 className="bg-noir-900 border border-white/10 text-xs text-white px-3 py-1.5 rounded-xs focus:outline-none focus:border-white/40 font-sans cursor-pointer"
               >
-                <option value="featured">Featured Curations</option>
+                <option value="featured">Featured</option>
                 <option value="price-asc">Price: Low to High</option>
                 <option value="price-desc">Price: High to Low</option>
                 <option value="newest">New Arrivals</option>
@@ -176,14 +176,14 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
             <div className="py-12 px-8 my-6 border-y border-white/[0.08] bg-noir-900/30 flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div>
                 <span className="text-[10px] font-mono tracking-ultra text-noir-400 uppercase block">
-                  NOIRÉ ATELIER PHILOSOPHY
+                  DESIGN PRINCIPLE
                 </span>
                 <p className="font-editorial italic text-2xl sm:text-3xl text-white mt-1">
                   “Less noise. More presence.”
                 </p>
               </div>
               <p className="text-xs text-noir-400 max-w-sm font-light leading-relaxed font-mono">
-                Engineered with 480–520GSM French terry, double-pleated virgin wool, and vegetable-tanned hides. Built for years of midnight striding.
+                Engineered with 480–520GSM French terry, double-pleated virgin wool, and vegetable-tanned hides. Built for structure, comfort, and longevity.
               </p>
             </div>
 
@@ -229,7 +229,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
         {filteredProducts.length === 0 && (
           <div className="py-20 text-center flex flex-col items-center justify-center">
             <p className="font-display text-2xl text-white">No items found in this category.</p>
-            <p className="text-sm text-noir-400 mt-2 font-light">Try selecting "ALL" to browse the full archive.</p>
+            <p className="text-sm text-noir-400 mt-2 font-light">Try selecting "ALL" to browse the full collection.</p>
             <button
               onClick={() => setSelectedCategory('ALL')}
               className="mt-6 px-6 py-3 bg-white text-noir-950 text-xs font-bold tracking-widest uppercase hover:bg-luxe-smoke"

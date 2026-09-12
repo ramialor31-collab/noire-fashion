@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
       >
         <img
           src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=85&w=2400"
-          alt="NOIRÉ Nocturnal Campaign"
+          alt="NOIRÉ Autumn-Winter Campaign"
           className="w-full h-full object-cover object-center filter grayscale contrast-[1.2] brightness-[0.45] scale-105"
         />
         {/* Soft Vignettes & Atmospheric Lighting */}
@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
         >
           <Sparkles className="w-3 h-3 text-luxe-gold" />
           <span className="text-[10px] font-mono tracking-widest uppercase text-noir-200">
-            ATELIER ARCHIVE // DROP 01
+            AUTUMN-WINTER 2026 // COLLECTION 01
           </span>
         </motion.div>
 
@@ -101,7 +101,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
           </h2>
           
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-noir-300 font-light max-w-md leading-relaxed">
-            Contemporary essentials designed for those who move differently. Architectural drape, heavyweight textiles, and nocturnal presence.
+            Contemporary luxury streetwear cut from heavyweight custom textiles and architectural silhouettes.
           </p>
         </motion.div>
 

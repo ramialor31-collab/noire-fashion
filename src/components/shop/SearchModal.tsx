@@ -102,7 +102,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
           {query.trim() === '' && (
             <div className="p-6">
               <span className="text-[10px] font-mono tracking-widest text-noir-400 uppercase block mb-3">
-                POPULAR DISCOVERIES
+                POPULAR SEARCHES
               </span>
               <div className="flex flex-wrap gap-2">
                 {TRENDING_TAGS.map((tag) => (
@@ -170,7 +170,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
           {/* Modal Footer */}
           <div className="px-6 py-3 bg-noir-950/60 border-t border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-noir-400">
             <span>PRESS ESC TO CLOSE</span>
-            <span>NOIRÉ ARCHIVE CATALOG</span>
+            <span>NOIRÉ CATALOG</span>
           </div>
         </motion.div>
       </div>

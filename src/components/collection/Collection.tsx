@@ -33,7 +33,7 @@ export const Collection: React.FC<CollectionProps> = ({
           <div>
             <div className="flex items-center space-x-3 mb-3">
               <span className="text-[10px] tracking-widest text-noir-400 font-mono uppercase">
-                SCENE 02 // ARCHIVE CURATION
+                CURATED SELECTION
               </span>
               <span className="w-8 h-[1px] bg-noir-800" />
             </div>
@@ -42,7 +42,7 @@ export const Collection: React.FC<CollectionProps> = ({
             </h2>
           </div>
           <p className="max-w-md text-xs sm:text-sm md:text-base text-noir-300 font-light leading-relaxed">
-            A radical study in nocturnal silhouettes. Cut from high-density natural fibers, custom hardware, and unyielding proportions.
+            Structured outerwear and foundational layers constructed from dense custom textiles and functional hardware.
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export const Collection: React.FC<CollectionProps> = ({
         <div className="relative mb-24 md:mb-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
-            {/* Main Visual with Coordinates & Hotspot Pins */}
+            {/* Main Visual with Hotspot Pin */}
             <div 
               onClick={() => onSelectProduct(heroProduct)}
               className="lg:col-span-7 relative group overflow-hidden bg-noir-900 border border-white/10 rounded-xs cursor-pointer"
@@ -65,16 +65,9 @@ export const Collection: React.FC<CollectionProps> = ({
                 />
               </div>
 
-              {/* Coordinates Badge */}
-              {heroProduct.coordinates && (
-                <div className="absolute top-5 left-5 px-3 py-1 bg-noir-950/85 backdrop-blur-md border border-white/10 text-[10px] font-mono tracking-widest text-noir-300 pointer-events-none">
-                  COORDINATES: {heroProduct.coordinates}
-                </div>
-              )}
-
               {/* Status Badge */}
               <div className="absolute top-5 right-5 px-3 py-1 bg-white text-noir-950 text-[10px] font-mono font-bold tracking-widest uppercase pointer-events-none">
-                {heroProduct.badge || 'FLAGSHIP PIECE'}
+                {heroProduct.badge || 'OUTERWEAR'}
               </div>
 
               {/* Interactive Hotspot Pin */}
@@ -86,19 +79,19 @@ export const Collection: React.FC<CollectionProps> = ({
                   <Plus className="w-3.5 h-3.5" />
                 </div>
                 <div className="absolute left-9 top-0 opacity-0 group-hover/pin:opacity-100 transition-opacity duration-300 pointer-events-none bg-noir-950/90 border border-white/15 px-3 py-1.5 whitespace-nowrap text-[11px] font-mono text-white">
-                  Tuscan Lambskin // Hand-Waxed
+                  Waxed Lambskin // Riri Zippers
                 </div>
               </div>
 
               {/* Hover Quick Action Drawer */}
               <div className="absolute bottom-0 inset-x-0 p-6 bg-gradient-to-t from-noir-950 via-noir-950/80 to-transparent flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-noir-400 uppercase tracking-widest font-mono">FLAGSHIP LEATHER</span>
+                  <span className="text-[10px] text-noir-400 uppercase tracking-widest font-mono">OUTERWEAR</span>
                   <p className="text-white font-mono text-base sm:text-lg font-bold">${heroProduct.price} USD</p>
                 </div>
                 <div className="inline-flex items-center space-x-2 px-4 py-2 bg-white text-noir-950 text-xs font-bold font-sans tracking-wider uppercase group-hover:bg-luxe-smoke transition-colors duration-200">
                   <Eye className="w-3.5 h-3.5" />
-                  <span>INSPECT SPECIFICATIONS</span>
+                  <span>VIEW DETAILS</span>
                 </div>
               </div>
             </div>
@@ -107,7 +100,7 @@ export const Collection: React.FC<CollectionProps> = ({
             <div className="lg:col-span-5 flex flex-col justify-center space-y-6 lg:pl-4">
               <div>
                 <span className="text-xs font-mono tracking-widest text-noir-400 uppercase">
-                  {heroProduct.category} // ARCHIVE NO. 09
+                  {heroProduct.category} // PIECE 09
                 </span>
                 <h3 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mt-1.5 leading-tight">
                   {heroProduct.name}
@@ -115,7 +108,7 @@ export const Collection: React.FC<CollectionProps> = ({
               </div>
 
               <blockquote className="font-editorial italic text-xl md:text-2xl text-noir-200 border-l border-white/30 pl-4 py-1">
-                "{heroProduct.editorialQuote || 'The crown jewel of nocturnal armour.'}"
+                "{heroProduct.tagline}"
               </blockquote>
 
               <p className="text-xs sm:text-sm md:text-base text-noir-300 font-light leading-relaxed">
@@ -124,7 +117,7 @@ export const Collection: React.FC<CollectionProps> = ({
 
               <div className="pt-4 border-t border-white/10 grid grid-cols-2 gap-4 text-xs font-mono text-noir-400">
                 <div>
-                  <span className="block text-noir-500 uppercase text-[10px]">CRAFT ORIGIN</span>
+                  <span className="block text-noir-500 uppercase text-[10px]">ORIGIN</span>
                   <span className="text-white font-medium">{heroProduct.details.origin}</span>
                 </div>
                 <div>
@@ -138,7 +131,7 @@ export const Collection: React.FC<CollectionProps> = ({
                   onClick={() => onSelectProduct(heroProduct)}
                   className="flex-1 py-3.5 sm:py-4 min-h-[44px] bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase hover:bg-luxe-smoke transition-all duration-200 active:scale-[0.99] text-center"
                 >
-                  VIEW PRODUCT DETAIL
+                  VIEW DETAILS
                 </button>
                 <button
                   onClick={() => addToCart(heroProduct, heroProduct.colors[0].name, heroProduct.sizes[1] || heroProduct.sizes[0], 1)}
@@ -158,10 +151,10 @@ export const Collection: React.FC<CollectionProps> = ({
         <div className="mb-20">
           <div className="flex items-center justify-between mb-8 border-b border-white/[0.08] pb-4">
             <span className="text-xs font-mono tracking-widest text-noir-400 uppercase">
-              LOOKBOOK SELECTIONS // 04 PIECES
+              LOOKBOOK SELECTION // 04 PIECES
             </span>
             <span className="text-xs text-noir-500 font-mono hidden sm:inline">
-              SELECT ANY SILHOUETTE TO EXPAND
+              SELECT ANY ITEM TO VIEW DETAILS
             </span>
           </div>
 
@@ -204,7 +197,7 @@ export const Collection: React.FC<CollectionProps> = ({
                   {/* Quick Action Overlay with smooth spring reveal */}
                   <div className="absolute inset-0 bg-noir-950/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4">
                     <span className="px-4 py-2 bg-white text-noir-950 text-[10px] font-mono font-bold tracking-widest uppercase shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      INSPECT PIECE
+                      QUICK VIEW
                     </span>
                   </div>
                 </div>
@@ -242,17 +235,17 @@ export const Collection: React.FC<CollectionProps> = ({
         <div className="mt-20 pt-10 border-t border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-6">
           <div>
             <p className="text-[10px] font-mono text-noir-400 tracking-widest uppercase">
-              NEXT SCENE // COMPLETE ARCHIVE
+              CATALOG // COLLECTION 01
             </p>
             <p className="font-display text-xl sm:text-2xl font-bold text-white mt-1">
-              READY TO DISCOVER ALL 12 PIECES?
+              EXPLORE ALL 12 PIECES
             </p>
           </div>
           <button
             onClick={onExploreShop}
             className="inline-flex items-center space-x-3 px-8 py-3.5 min-h-[44px] bg-transparent border border-white text-white font-sans text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-noir-950 transition-all duration-300 active:scale-[0.99]"
           >
-            <span>VIEW ALL IN SHOP</span>
+            <span>BROWSE SHOP</span>
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>

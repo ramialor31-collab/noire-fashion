@@ -51,7 +51,7 @@ export const CheckoutModal: React.FC = () => {
     setInfo({
       firstName: 'Alexander',
       lastName: 'Vane',
-      email: 'alexander.vane@noire-atelier.com',
+      email: 'alexander.vane@example.com',
       phone: '+1 (555) 019-2834',
       address: '742 Evergreen Terrace',
       apartment: 'Suite 4B',
@@ -144,7 +144,7 @@ export const CheckoutModal: React.FC = () => {
         <div className="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between bg-noir-950 shrink-0">
           <div className="flex items-center space-x-3">
             <span className="font-display font-extrabold text-lg text-white tracking-tight">
-              NOIRÉ ATELIER
+              NOIRÉ
             </span>
             <span className="text-[10px] font-mono px-2 py-0.5 bg-white/10 text-noir-300 rounded uppercase">
               CHECKOUT
@@ -257,7 +257,7 @@ export const CheckoutModal: React.FC = () => {
                         required
                         value={info.email}
                         onChange={(e) => setInfo({ ...info, email: e.target.value })}
-                        placeholder="client@atelier-noire.com"
+                        placeholder="alexander@example.com"
                         className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
@@ -379,7 +379,7 @@ export const CheckoutModal: React.FC = () => {
                           Standard Tracked Courier (3–5 Business Days)
                         </span>
                         <span className="text-xs text-noir-400 font-mono">
-                          Dispatched from Tokyo or Paris Central Atelier
+                          Dispatched with standard courier tracking
                         </span>
                       </div>
                       <span className="font-mono text-sm font-bold text-white">
@@ -397,10 +397,10 @@ export const CheckoutModal: React.FC = () => {
                     >
                       <div>
                         <span className="font-sans font-semibold text-white block">
-                          Priority Nocturne Express (1–2 Business Days)
+                          Priority Express (1–2 Business Days)
                         </span>
                         <span className="text-xs text-noir-400 font-mono">
-                          Carbon-neutral express flight with signature release
+                          Express air courier with signature upon delivery
                         </span>
                       </div>
                       <span className="font-mono text-sm font-bold text-white">
