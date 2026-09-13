@@ -160,21 +160,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
             <span className="text-[10px] text-noir-500 font-mono">USD</span>
           </div>
 
-          {/* Color Swatches with subtle hover transition */}
-          <div className="flex items-center space-x-1.5" onClick={(e) => e.stopPropagation()}>
+          {/* Color Swatches with comfortable touch target */}
+          <div className="flex items-center space-x-0.5" onClick={(e) => e.stopPropagation()}>
             {product.colors.map((c) => (
               <button
                 key={c.name}
                 onClick={() => setSelectedColor(c.name)}
-                style={{ backgroundColor: c.hex }}
-                className={`w-3.5 h-3.5 rounded-full border transition-all duration-200 ${
-                  selectedColor === c.name
-                    ? 'border-white scale-110 ring-1 ring-white/60'
-                    : 'border-white/20 hover:scale-105 hover:border-white/40'
-                }`}
+                className="min-w-[28px] min-h-[28px] p-1 flex items-center justify-center"
                 title={c.name}
                 aria-label={`Select ${c.name}`}
-              />
+              >
+                <span
+                  style={{ backgroundColor: c.hex }}
+                  className={`w-3.5 h-3.5 rounded-full border transition-all duration-200 block ${
+                    selectedColor === c.name
+                      ? 'border-white scale-110 ring-1 ring-white/60'
+                      : 'border-white/20 hover:scale-105 hover:border-white/40'
+                  }`}
+                />
+              </button>
             ))}
           </div>
         </div>

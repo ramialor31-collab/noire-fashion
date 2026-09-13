@@ -64,7 +64,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
 
   return (
     <section id="shop" className="relative w-full bg-noir-950 py-20 md:py-32 border-t border-white/[0.06]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         
         {/* Section Heading & Scene Info */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 md:mb-16 gap-6">
@@ -96,7 +96,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-2 text-xs font-mono tracking-widest uppercase transition-all duration-300 whitespace-nowrap rounded-xs flex items-center space-x-2 ${
+                  className={`px-3.5 py-2 min-h-[40px] text-xs font-mono tracking-widest uppercase transition-all duration-300 whitespace-nowrap rounded-xs flex items-center space-x-2 ${
                     isSelected
                       ? 'bg-white text-noir-950 font-bold shadow-lg'
                       : 'text-noir-400 hover:text-white hover:bg-white/[0.05]'
@@ -121,7 +121,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as SortOption)}
-                className="bg-noir-900 border border-white/10 text-xs text-white px-3 py-1.5 rounded-xs focus:outline-none focus:border-white/40 font-sans cursor-pointer"
+                className="bg-noir-900 border border-white/10 text-xs text-white px-3 py-2 min-h-[40px] rounded-xs focus:outline-none focus:border-white/40 font-sans cursor-pointer"
               >
                 <option value="featured">Featured</option>
                 <option value="price-asc">Price: Low to High</option>

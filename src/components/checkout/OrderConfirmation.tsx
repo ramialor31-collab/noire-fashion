@@ -28,7 +28,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
   }, []);
 
   return (
-    <div className="p-6 md:p-10 max-w-2xl mx-auto text-left">
+    <div className="p-4 sm:p-6 md:p-10 max-w-2xl mx-auto text-left">
       {/* Top Status */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -44,7 +44,7 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
           DEMO TRANSACTION VERIFIED
         </span>
 
-        <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-white mt-2">
+        <h2 className="font-display text-2xl sm:text-4xl font-extrabold text-white mt-2">
           ORDER CONFIRMED
         </h2>
 

@@ -37,7 +37,7 @@ export const Contact: React.FC = () => {
 
   return (
     <section id="contact" className="relative w-full bg-noir-950 py-20 md:py-32 border-t border-white/[0.06]">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         
         {/* Section Header Meta */}
         <div className="flex items-center space-x-3 mb-8">
@@ -54,7 +54,7 @@ export const Contact: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.88]"
+            className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]"
           >
             SEE YOU <br />
             <span className="font-editorial italic font-normal text-noir-200">AFTER DARK.</span>
@@ -66,7 +66,7 @@ export const Contact: React.FC = () => {
           
           {/* Left: VIP Private Release Access */}
           <div className="lg:col-span-6 space-y-6">
-            <div className="p-6 sm:p-8 bg-noir-900 border border-white/10 rounded-xs">
+            <div className="p-4 sm:p-8 bg-noir-900 border border-white/10 rounded-xs">
               <div className="flex items-center space-x-2 text-luxe-gold text-xs font-mono mb-2">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>NEWSLETTER & RELEASES</span>
@@ -93,11 +93,11 @@ export const Contact: React.FC = () => {
                     value={vipEmail}
                     onChange={(e) => setVipEmail(e.target.value)}
                     placeholder="Enter email address..."
-                    className="flex-1 bg-noir-950 border border-white/15 px-4 py-3 text-xs text-white placeholder:text-noir-500 focus:outline-none focus:border-white/40 font-mono"
+                    className="flex-1 bg-noir-950 border border-white/15 px-4 py-3 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-500 focus:outline-none focus:border-white/40 font-mono"
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors whitespace-nowrap"
+                    className="w-full sm:w-auto px-6 py-3 min-h-[44px] bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors whitespace-nowrap flex items-center justify-center"
                   >
                     SUBSCRIBE
                   </button>
@@ -143,10 +143,10 @@ export const Contact: React.FC = () => {
               {faqs.map((faq, idx) => {
                 const isOpen = openFaq === idx;
                 return (
-                  <div key={idx} className="py-4">
+                  <div key={idx} className="py-2 sm:py-3">
                     <button
                       onClick={() => setOpenFaq(isOpen ? null : idx)}
-                      className="w-full flex items-center justify-between text-left group"
+                      className="w-full flex items-center justify-between text-left group min-h-[44px] py-1"
                     >
                       <span className="font-display font-semibold text-sm sm:text-base text-white group-hover:text-luxe-smoke transition-colors">
                         {faq.q}

@@ -26,7 +26,7 @@ export const Collection: React.FC<CollectionProps> = ({
       <div className="absolute top-1/4 -left-40 w-96 h-96 bg-noir-800/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-noir-800/15 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 md:mb-20 gap-6">
@@ -219,7 +219,7 @@ export const Collection: React.FC<CollectionProps> = ({
                     </span>
                     <button
                       onClick={() => onSelectProduct(product)}
-                      className="text-xs text-noir-400 hover:text-white transition-colors duration-200 flex items-center space-x-1 py-1"
+                      className="text-xs text-noir-400 hover:text-white transition-colors duration-200 flex items-center space-x-1 py-1 min-h-[44px]"
                     >
                       <span className="font-mono text-[11px]">VIEW</span>
                       <ArrowRight className="w-3 h-3" />
@@ -243,7 +243,7 @@ export const Collection: React.FC<CollectionProps> = ({
           </div>
           <button
             onClick={onExploreShop}
-            className="inline-flex items-center space-x-3 px-8 py-3.5 min-h-[44px] bg-transparent border border-white text-white font-sans text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-noir-950 transition-all duration-300 active:scale-[0.99]"
+            className="inline-flex items-center justify-center space-x-3 w-full sm:w-auto px-8 py-3.5 min-h-[44px] bg-transparent border border-white text-white font-sans text-xs font-bold tracking-widest uppercase hover:bg-white hover:text-noir-950 transition-all duration-300 active:scale-[0.99]"
           >
             <span>BROWSE SHOP</span>
             <ArrowRight className="w-4 h-4" />

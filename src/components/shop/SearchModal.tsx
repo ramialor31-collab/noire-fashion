@@ -55,7 +55,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 md:pt-24 px-4 bg-noir-950/80 backdrop-blur-xl">
+      <div className="fixed inset-0 z-50 flex items-start justify-center pt-4 sm:pt-16 md:pt-24 px-3 sm:px-4 bg-noir-950/80 backdrop-blur-xl overflow-y-auto">
         {/* Backdrop click to close */}
         <div 
           className="absolute inset-0"
@@ -68,30 +68,30 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: -20 }}
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-2xl bg-noir-900 border border-white/10 rounded-sm shadow-2xl overflow-hidden z-10"
+          className="relative w-full max-w-2xl bg-noir-900 border border-white/10 rounded-sm shadow-2xl overflow-hidden z-10 my-4 sm:my-0"
         >
           {/* Search Header Input */}
-          <div className="flex items-center px-6 py-5 border-b border-white/[0.08]">
-            <Search className="w-5 h-5 text-noir-400 mr-3 shrink-0" />
+          <div className="flex items-center px-4 sm:px-6 py-3.5 sm:py-5 border-b border-white/[0.08]">
+            <Search className="w-5 h-5 text-noir-400 mr-2.5 sm:mr-3 shrink-0" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search by silhouette, garment, fabric (e.g. Hoodie, Waxed, Wool)..."
-              className="w-full bg-transparent text-base md:text-lg text-white placeholder:text-noir-500 focus:outline-none font-sans"
+              placeholder="Search by silhouette, garment, fabric..."
+              className="w-full bg-transparent text-sm sm:text-base md:text-lg text-white placeholder:text-noir-500 focus:outline-none font-sans"
             />
             {query && (
               <button
                 onClick={() => setQuery('')}
-                className="text-noir-400 hover:text-white mr-2 text-xs font-mono"
+                className="text-noir-400 hover:text-white mr-1 sm:mr-2 text-xs font-mono min-h-[44px] px-2 flex items-center"
               >
                 CLEAR
               </button>
             )}
             <button
               onClick={() => setIsSearchOpen(false)}
-              className="p-1 text-noir-400 hover:text-white transition-colors"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center text-noir-400 hover:text-white transition-colors p-2"
               aria-label="Close search modal"
             >
               <X className="w-5 h-5" />
@@ -100,7 +100,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
 
           {/* Trending Suggestions if empty query */}
           {query.trim() === '' && (
-            <div className="p-6">
+            <div className="p-4 sm:p-6">
               <span className="text-[10px] font-mono tracking-widest text-noir-400 uppercase block mb-3">
                 POPULAR SEARCHES
               </span>
@@ -109,7 +109,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
                   <button
                     key={tag}
                     onClick={() => setQuery(tag)}
-                    className="px-3 py-1.5 text-xs font-mono text-noir-300 bg-noir-800 border border-white/[0.06] hover:border-white/30 hover:text-white rounded-sm transition-colors"
+                    className="px-3 py-2 min-h-[38px] text-xs font-mono text-noir-300 bg-noir-800 border border-white/[0.06] hover:border-white/30 hover:text-white rounded-sm transition-colors"
                   >
                     {tag}
                   </button>
@@ -131,11 +131,11 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
                     }}
                     className="group flex items-center justify-between p-3 hover:bg-white/[0.04] transition-colors cursor-pointer rounded-sm"
                   >
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-3 sm:space-x-4">
                       <img
                         src={product.images[0]}
                         alt={product.name}
-                        className="w-14 h-18 object-cover rounded-xs border border-white/10 shrink-0"
+                        className="w-14 aspect-[3/4] object-cover rounded-xs border border-white/10 shrink-0"
                       />
                       <div>
                         <span className="text-[10px] font-mono text-noir-400 uppercase tracking-wider block">

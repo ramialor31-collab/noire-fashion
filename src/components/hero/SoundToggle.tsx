@@ -64,7 +64,7 @@ export const SoundToggle: React.FC = () => {
   return (
     <button
       onClick={toggleSound}
-      className="group flex items-center space-x-2 text-[10px] tracking-widest text-noir-400 hover:text-white transition-colors duration-300 py-1 px-2.5 rounded-full border border-noir-850 bg-noir-900/60 backdrop-blur-md"
+      className="group min-h-[44px] min-w-[44px] flex items-center justify-center space-x-2 text-[10px] tracking-widest text-noir-400 hover:text-white transition-colors duration-300 py-1.5 px-3 rounded-full border border-noir-850 bg-noir-900/60 backdrop-blur-md"
       title={isPlaying ? 'Mute ambient soundscape' : 'Enable ambient soundscape'}
     >
       {isPlaying ? (

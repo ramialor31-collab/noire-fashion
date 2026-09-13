@@ -28,7 +28,7 @@ export const EmptyCart: React.FC<EmptyCartProps> = ({ onBrowse }) => {
           setIsCartOpen(false);
           onBrowse();
         }}
-        className="mt-8 inline-flex items-center space-x-3 px-8 py-3.5 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors"
+        className="mt-8 inline-flex items-center space-x-3 px-8 py-3.5 min-h-[44px] bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors"
       >
         <span>EXPLORE COLLECTION</span>
         <ArrowRight className="w-3.5 h-3.5" />

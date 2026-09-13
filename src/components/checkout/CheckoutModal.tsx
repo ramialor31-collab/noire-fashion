@@ -138,11 +138,11 @@ export const CheckoutModal: React.FC = () => {
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.96 }}
-        className="relative w-full max-w-3xl bg-noir-900 border border-white/10 shadow-2xl rounded-none sm:rounded-sm overflow-hidden z-10 my-auto max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-3xl bg-noir-900 border border-white/10 shadow-2xl rounded-none sm:rounded-sm overflow-hidden z-10 my-auto h-full sm:h-auto max-h-[100dvh] sm:max-h-[92vh] flex flex-col"
       >
         {/* Checkout Header */}
-        <div className="px-6 py-4 border-b border-white/[0.08] flex items-center justify-between bg-noir-950 shrink-0">
-          <div className="flex items-center space-x-3">
+        <div className="px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/[0.08] flex items-center justify-between bg-noir-950 shrink-0">
+          <div className="flex items-center space-x-2.5 sm:space-x-3">
             <span className="font-display font-extrabold text-lg text-white tracking-tight">
               NOIRÉ
             </span>
@@ -151,15 +151,16 @@ export const CheckoutModal: React.FC = () => {
             </span>
           </div>
 
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             {step !== 'confirmation' && (
               <button
                 type="button"
                 onClick={handlePrefillDemo}
-                className="text-[11px] font-mono text-luxe-gold hover:underline border border-luxe-gold/30 px-2 py-1 rounded-xs"
+                className="text-[11px] font-mono text-luxe-gold hover:underline border border-luxe-gold/30 px-2.5 py-1.5 min-h-[36px] flex items-center rounded-xs"
                 title="Fill with simulated test data"
               >
-                + PREFILL DEMO DATA
+                <span className="hidden sm:inline">+ PREFILL DEMO DATA</span>
+                <span className="sm:hidden">+ DEMO DATA</span>
               </button>
             )}
 
@@ -175,14 +176,22 @@ export const CheckoutModal: React.FC = () => {
 
         {/* Multi-step progress indicator */}
         {step !== 'confirmation' && (
-          <div className="px-6 py-3 bg-noir-850/60 border-b border-white/[0.06] flex items-center justify-between text-[10px] font-mono text-noir-400">
-            <span className={step === 'information' ? 'text-white font-bold' : ''}>1. INFORMATION</span>
-            <span>→</span>
-            <span className={step === 'shipping' ? 'text-white font-bold' : ''}>2. SHIPPING</span>
-            <span>→</span>
-            <span className={step === 'payment' ? 'text-white font-bold' : ''}>3. PAYMENT</span>
-            <span>→</span>
-            <span className={step === 'review' ? 'text-white font-bold' : ''}>4. REVIEW</span>
+          <div className="px-3 sm:px-6 py-2.5 sm:py-3 bg-noir-850/60 border-b border-white/[0.06] flex items-center justify-between text-[9px] sm:text-[10px] font-mono text-noir-400">
+            <span className={step === 'information' ? 'text-white font-bold' : ''}>
+              1. <span className="hidden sm:inline">INFORMATION</span><span className="sm:hidden">INFO</span>
+            </span>
+            <span className="text-noir-600">→</span>
+            <span className={step === 'shipping' ? 'text-white font-bold' : ''}>
+              2. SHIP<span className="hidden sm:inline">PING</span>
+            </span>
+            <span className="text-noir-600">→</span>
+            <span className={step === 'payment' ? 'text-white font-bold' : ''}>
+              3. PAY<span className="hidden sm:inline">MENT</span>
+            </span>
+            <span className="text-noir-600">→</span>
+            <span className={step === 'review' ? 'text-white font-bold' : ''}>
+              4. REVIEW
+            </span>
           </div>
         )}
 
@@ -197,7 +206,7 @@ export const CheckoutModal: React.FC = () => {
               }}
             />
           ) : (
-            <div className="p-6 md:p-8 space-y-6">
+            <div className="p-4 sm:p-6 md:p-8 space-y-5 sm:space-y-6">
               
               {/* Demo Safety Banner */}
               <div className="p-3 bg-noir-950 border border-white/15 rounded-xs flex items-center space-x-3 text-xs text-noir-300">
@@ -229,7 +238,7 @@ export const CheckoutModal: React.FC = () => {
                         value={info.firstName}
                         onChange={(e) => setInfo({ ...info, firstName: e.target.value })}
                         placeholder="Alexander"
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
                     <div>
@@ -242,7 +251,7 @@ export const CheckoutModal: React.FC = () => {
                         value={info.lastName}
                         onChange={(e) => setInfo({ ...info, lastName: e.target.value })}
                         placeholder="Vane"
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
                   </div>
@@ -258,7 +267,7 @@ export const CheckoutModal: React.FC = () => {
                         value={info.email}
                         onChange={(e) => setInfo({ ...info, email: e.target.value })}
                         placeholder="alexander@example.com"
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
                     <div>
@@ -271,7 +280,7 @@ export const CheckoutModal: React.FC = () => {
                         value={info.phone}
                         onChange={(e) => setInfo({ ...info, phone: e.target.value })}
                         placeholder="+1 (555) 019-2834"
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
                   </div>
@@ -286,7 +295,7 @@ export const CheckoutModal: React.FC = () => {
                       value={info.address}
                       onChange={(e) => setInfo({ ...info, address: e.target.value })}
                       placeholder="742 Evergreen Terrace"
-                      className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                      className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                     />
                   </div>
 
@@ -301,7 +310,7 @@ export const CheckoutModal: React.FC = () => {
                         value={info.city}
                         onChange={(e) => setInfo({ ...info, city: e.target.value })}
                         placeholder="New York"
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
                     <div>
@@ -314,7 +323,7 @@ export const CheckoutModal: React.FC = () => {
                         value={info.postalCode}
                         onChange={(e) => setInfo({ ...info, postalCode: e.target.value })}
                         placeholder="10001"
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40"
                       />
                     </div>
                     <div>
@@ -324,7 +333,7 @@ export const CheckoutModal: React.FC = () => {
                       <select
                         value={info.country}
                         onChange={(e) => setInfo({ ...info, country: e.target.value })}
-                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-white/40 cursor-pointer font-sans"
+                        className="w-full bg-noir-950 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white focus:outline-none focus:border-white/40 cursor-pointer font-sans"
                       >
                         <option value="United States">United States</option>
                         <option value="United Kingdom">United Kingdom</option>
@@ -345,7 +354,7 @@ export const CheckoutModal: React.FC = () => {
                         }
                         setStep('shipping');
                       }}
-                      className="px-8 py-3.5 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors flex items-center space-x-2"
+                      className="w-full sm:w-auto px-8 py-3.5 min-h-[44px] bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors flex items-center justify-center space-x-2"
                     >
                       <span>CONTINUE TO SHIPPING</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -409,11 +418,11 @@ export const CheckoutModal: React.FC = () => {
                     </label>
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between">
+                  <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
                     <button
                       type="button"
                       onClick={() => setStep('information')}
-                      className="text-xs font-mono text-noir-400 hover:text-white flex items-center space-x-1"
+                      className="text-xs font-mono text-noir-400 hover:text-white flex items-center justify-center sm:justify-start space-x-1 min-h-[44px] px-2"
                     >
                       <ArrowLeft className="w-3.5 h-3.5" />
                       <span>BACK TO INFO</span>
@@ -422,7 +431,7 @@ export const CheckoutModal: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => setStep('payment')}
-                      className="px-8 py-3.5 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors flex items-center space-x-2"
+                      className="w-full sm:w-auto px-8 py-3.5 min-h-[44px] bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors flex items-center justify-center space-x-2"
                     >
                       <span>CONTINUE TO PAYMENT</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -443,14 +452,14 @@ export const CheckoutModal: React.FC = () => {
                   </h3>
 
                   {/* One-Click Demo Wallets */}
-                  <div className="grid grid-cols-2 gap-3 mb-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
                     <button
                       type="button"
                       onClick={() => {
                         setPaymentMethod('apple_pay');
                         setStep('review');
                       }}
-                      className="py-3 px-4 bg-black border border-white/20 hover:border-white text-white font-sans text-xs font-semibold rounded-xs transition-colors flex items-center justify-center space-x-2"
+                      className="min-h-[44px] py-3 px-4 bg-black border border-white/20 hover:border-white text-white font-sans text-xs font-semibold rounded-xs transition-colors flex items-center justify-center space-x-2"
                     >
                       <span>Pay with</span>
                       <span className="font-bold tracking-tight">Pay (Demo)</span>
@@ -462,7 +471,7 @@ export const CheckoutModal: React.FC = () => {
                         setPaymentMethod('google_pay');
                         setStep('review');
                       }}
-                      className="py-3 px-4 bg-black border border-white/20 hover:border-white text-white font-sans text-xs font-semibold rounded-xs transition-colors flex items-center justify-center space-x-2"
+                      className="min-h-[44px] py-3 px-4 bg-black border border-white/20 hover:border-white text-white font-sans text-xs font-semibold rounded-xs transition-colors flex items-center justify-center space-x-2"
                     >
                       <span>Pay with</span>
                       <span className="font-bold tracking-tight">G Pay (Demo)</span>
@@ -489,9 +498,9 @@ export const CheckoutModal: React.FC = () => {
                           value={card.number}
                           onChange={(e) => handleCardNumberChange(e.target.value)}
                           placeholder="4242 •••• •••• 4242"
-                          className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono tracking-wider"
+                          className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono tracking-wider"
                         />
-                        <CreditCard className="w-4 h-4 text-noir-500 absolute right-3 top-3" />
+                        <CreditCard className="w-4 h-4 text-noir-500 absolute right-3 top-3.5" />
                       </div>
                     </div>
 
@@ -505,7 +514,7 @@ export const CheckoutModal: React.FC = () => {
                           value={card.exp}
                           onChange={(e) => handleExpChange(e.target.value)}
                           placeholder="12/28"
-                          className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono"
+                          className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono"
                         />
                       </div>
                       <div>
@@ -518,7 +527,7 @@ export const CheckoutModal: React.FC = () => {
                           value={card.cvc}
                           onChange={(e) => setCard({ ...card, cvc: e.target.value })}
                           placeholder="888"
-                          className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono"
+                          className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono"
                         />
                       </div>
                     </div>
@@ -532,16 +541,16 @@ export const CheckoutModal: React.FC = () => {
                         value={card.name}
                         onChange={(e) => setCard({ ...card, name: e.target.value.toUpperCase() })}
                         placeholder="ALEXANDER VANE"
-                        className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono uppercase"
+                        className="w-full bg-noir-900 border border-white/10 px-3.5 py-2.5 min-h-[44px] text-base sm:text-xs text-white placeholder:text-noir-600 focus:outline-none focus:border-white/40 font-mono uppercase"
                       />
                     </div>
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between">
+                  <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
                     <button
                       type="button"
                       onClick={() => setStep('shipping')}
-                      className="text-xs font-mono text-noir-400 hover:text-white flex items-center space-x-1"
+                      className="text-xs font-mono text-noir-400 hover:text-white flex items-center justify-center sm:justify-start space-x-1 min-h-[44px] px-2"
                     >
                       <ArrowLeft className="w-3.5 h-3.5" />
                       <span>BACK TO SHIPPING</span>
@@ -554,7 +563,7 @@ export const CheckoutModal: React.FC = () => {
                         setPaymentMethod('card');
                         setStep('review');
                       }}
-                      className="px-8 py-3.5 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors flex items-center space-x-2"
+                      className="w-full sm:w-auto px-8 py-3.5 min-h-[44px] bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-colors flex items-center justify-center space-x-2"
                     >
                       <span>REVIEW ORDER</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -576,15 +585,15 @@ export const CheckoutModal: React.FC = () => {
 
                   {/* Summary Box */}
                   <div className="bg-noir-950 p-4 border border-white/10 rounded-xs space-y-3 text-xs font-mono">
-                    <div className="flex justify-between pb-2 border-b border-white/[0.06]">
+                    <div className="flex flex-col sm:flex-row sm:justify-between pb-2 border-b border-white/[0.06] gap-1 sm:gap-0">
                       <span className="text-noir-400">RECIPIENT:</span>
                       <span className="text-white font-medium">{info.firstName} {info.lastName} ({info.email})</span>
                     </div>
-                    <div className="flex justify-between pb-2 border-b border-white/[0.06]">
+                    <div className="flex flex-col sm:flex-row sm:justify-between pb-2 border-b border-white/[0.06] gap-1 sm:gap-0">
                       <span className="text-noir-400">SHIPPING TO:</span>
                       <span className="text-white font-medium">{info.address}, {info.city}</span>
                     </div>
-                    <div className="flex justify-between pb-2 border-b border-white/[0.06]">
+                    <div className="flex flex-col sm:flex-row sm:justify-between pb-2 border-b border-white/[0.06] gap-1 sm:gap-0">
                       <span className="text-noir-400">PAYMENT VIA:</span>
                       <span className="text-white font-medium uppercase">{paymentMethod.replace('_', ' ')} (DEMO)</span>
                     </div>
@@ -605,11 +614,11 @@ export const CheckoutModal: React.FC = () => {
                   )}
 
                   {!isProcessing && (
-                    <div className="pt-4 flex items-center justify-between">
+                    <div className="pt-4 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-between gap-3">
                       <button
                         type="button"
                         onClick={() => setStep('payment')}
-                        className="text-xs font-mono text-noir-400 hover:text-white flex items-center space-x-1"
+                        className="text-xs font-mono text-noir-400 hover:text-white flex items-center justify-center sm:justify-start space-x-1 min-h-[44px] px-2"
                       >
                         <ArrowLeft className="w-3.5 h-3.5" />
                         <span>CHANGE DETAILS</span>
@@ -618,7 +627,7 @@ export const CheckoutModal: React.FC = () => {
                       <button
                         type="button"
                         onClick={handleSimulatePayment}
-                        className="px-8 py-4 bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-all duration-300 flex items-center space-x-2 shadow-2xl"
+                        className="w-full sm:w-auto px-8 py-4 min-h-[48px] bg-white text-noir-950 text-xs font-bold font-sans tracking-widest uppercase hover:bg-luxe-smoke transition-all duration-300 flex items-center justify-center space-x-2 shadow-2xl"
                       >
                         <Lock className="w-3.5 h-3.5" />
                         <span>PAY ${finalOrderTotal} USD (DEMO)</span>

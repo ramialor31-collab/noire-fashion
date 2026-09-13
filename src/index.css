@@ -7,6 +7,12 @@
     color-scheme: dark;
   }
 
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     background-color: #080808;
     color: #F6F5F2;

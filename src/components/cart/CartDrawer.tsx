@@ -61,7 +61,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
         />
 
         {/* Slide-over Drawer Panel */}
-        <div className="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+        <div className="fixed inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
           <motion.div
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -70,7 +70,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
             className="w-screen max-w-md bg-noir-900 border-l border-white/10 shadow-2xl flex flex-col justify-between"
           >
             {/* Drawer Header */}
-            <div className="p-5 sm:p-6 border-b border-white/[0.08] flex items-center justify-between bg-noir-950/60">
+            <div className="p-4 sm:p-6 border-b border-white/[0.08] flex items-center justify-between bg-noir-950/60">
               <div className="flex items-center space-x-2.5">
                 <span className="font-display text-xl font-bold text-white tracking-tight">SHOPPING BAG</span>
                 <span className="font-mono text-xs text-noir-400">({itemCount} {itemCount === 1 ? 'ITEM' : 'ITEMS'})</span>
@@ -85,7 +85,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
             </div>
 
             {/* Free Shipping Progress Indicator */}
-            <div className="px-5 sm:px-6 py-3.5 bg-noir-950 border-b border-white/[0.06]">
+            <div className="px-4 sm:px-6 py-3.5 bg-noir-950 border-b border-white/[0.06]">
               <div className="flex items-center justify-between text-[11px] font-mono tracking-wider text-noir-300 mb-2">
                 {amountUntilFreeShipping === 0 ? (
                   <span className="text-white font-medium flex items-center space-x-1.5">
@@ -108,7 +108,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
             </div>
 
             {/* Main Cart Items List with AnimatePresence Item Removal */}
-            <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
               {cart.length === 0 ? (
                 <EmptyCart onBrowse={onBrowseShop} />
               ) : (
@@ -122,12 +122,12 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                       transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                       className="pb-4 border-b border-white/[0.06] last:border-b-0"
                     >
-                      <div className="flex space-x-4 pt-1">
+                      <div className="flex space-x-3.5 sm:space-x-4 pt-1">
                         {/* Item Thumbnail */}
                         <img
                           src={item.image}
                           alt={item.name}
-                          className="w-20 h-26 object-cover bg-noir-950 border border-white/10 shrink-0 rounded-xs"
+                          className="w-16 sm:w-20 aspect-[3/4] object-cover bg-noir-950 border border-white/10 shrink-0 rounded-xs"
                         />
 
                         {/* Details */}
@@ -139,7 +139,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                               </h4>
                               <button
                                 onClick={() => removeFromCart(item.id)}
-                                className="text-noir-500 hover:text-red-400 transition-colors duration-150 p-1.5 -mr-1.5 -mt-1 rounded-xs active:scale-90"
+                                className="text-noir-500 hover:text-red-400 transition-colors duration-150 min-w-[36px] min-h-[36px] p-2 -mr-2 -mt-1.5 rounded-xs active:scale-90 flex items-center justify-center"
                                 title="Remove item"
                                 aria-label={`Remove ${item.name}`}
                               >
@@ -158,7 +158,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                             <div className="flex items-center border border-white/15 bg-noir-950 rounded-xs">
                               <button
                                 onClick={() => updateQuantity(item.id, -1)}
-                                className="w-8 h-8 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
+                                className="min-w-[34px] min-h-[34px] flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
                                 aria-label="Decrease quantity"
                               >
                                 -
@@ -166,7 +166,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                               <span className="w-7 text-center font-mono text-xs text-white font-medium">{item.quantity}</span>
                               <button
                                 onClick={() => updateQuantity(item.id, 1)}
-                                className="w-8 h-8 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
+                                className="min-w-[34px] min-h-[34px] flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
                                 aria-label="Increase quantity"
                               >
                                 +
@@ -210,11 +210,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                       value={promoInput}
                       onChange={(e) => setPromoInput(e.target.value)}
                       placeholder="Promo code (e.g. NOIRE10)"
-                      className="flex-1 bg-noir-900 border border-white/10 px-3 py-2 text-xs text-white uppercase placeholder:normal-case placeholder:text-noir-500 focus:outline-none focus:border-white/40 font-mono rounded-xs"
+                      className="flex-1 bg-noir-900 border border-white/10 px-3 py-2 text-base sm:text-xs text-white uppercase placeholder:normal-case placeholder:text-noir-500 focus:outline-none focus:border-white/40 font-mono rounded-xs min-h-[42px]"
                     />
                     <button
                       type="submit"
-                      className="px-4 py-2 bg-noir-800 border border-white/20 text-white text-xs font-mono uppercase hover:bg-white hover:text-noir-950 transition-all duration-200 active:scale-95 rounded-xs"
+                      className="px-4 py-2 bg-noir-800 border border-white/20 text-white text-xs font-mono uppercase hover:bg-white hover:text-noir-950 transition-all duration-200 active:scale-95 rounded-xs min-h-[42px]"
                     >
                       APPLY
                     </button>

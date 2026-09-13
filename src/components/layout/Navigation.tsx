@@ -38,7 +38,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
             : 'bg-gradient-to-b from-noir-950/90 via-noir-950/40 to-transparent py-5 md:py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex items-center justify-between">
           
           {/* Left: Desktop Navigation Links with subtle hover lift and underline */}
           <nav className="hidden lg:flex items-center space-x-9 text-xs tracking-widest font-mono text-noir-400">
@@ -73,7 +73,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
           {/* Center: Brand Identity with refined tracking and subtitle */}
           <button
             onClick={() => onNavigate('hero')}
-            className="group flex flex-col items-center cursor-pointer text-left md:text-center focus:outline-none"
+            className="group flex flex-col items-center cursor-pointer text-left md:text-center focus:outline-none py-1"
             aria-label="NOIRÉ Home"
           >
             <span className="font-display font-extrabold text-2xl md:text-3xl tracking-[-0.05em] text-white transition-all duration-300 group-hover:opacity-90">
@@ -84,15 +84,15 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
             </span>
           </button>
 
-          {/* Right: Actions */}
-          <div className="flex items-center space-x-6 md:space-x-8">
+          {/* Right: Actions with minimum 44px touch targets */}
+          <div className="flex items-center space-x-1 sm:space-x-4 md:space-x-8">
             {/* Search Trigger */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="group flex items-center space-x-2 text-xs tracking-widest font-mono text-noir-400 hover:text-white transition-colors duration-300 py-1"
+              className="group min-w-[44px] min-h-[44px] flex items-center justify-center space-x-2 text-xs tracking-widest font-mono text-noir-400 hover:text-white transition-colors duration-300 p-2"
               aria-label="Search Collection"
             >
-              <Search className="w-3.5 h-3.5 text-noir-400 transition-transform duration-300 group-hover:scale-110 group-hover:text-white" />
+              <Search className="w-4 h-4 text-noir-400 transition-transform duration-300 group-hover:scale-110 group-hover:text-white" />
               <span className="hidden sm:inline font-medium">SEARCH</span>
               <kbd className="hidden md:inline-block px-1.5 py-0.5 text-[9px] text-noir-400 bg-noir-900 border border-white/10 rounded font-mono">
                 ⌘K
@@ -102,7 +102,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
             {/* Bag Trigger with Live Counter */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="group relative flex items-center space-x-2.5 text-xs tracking-widest font-mono text-noir-300 hover:text-white transition-all duration-300 py-1"
+              className="group relative min-w-[44px] min-h-[44px] flex items-center justify-center space-x-2 text-xs tracking-widest font-mono text-noir-300 hover:text-white transition-all duration-300 p-2"
               aria-label={`Shopping Bag with ${itemCount} items`}
             >
               <div className="relative">
@@ -125,7 +125,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-1 text-noir-300 hover:text-white transition-colors"
+              className="lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-noir-300 hover:text-white transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {isMobileMenuOpen ? (

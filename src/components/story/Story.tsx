@@ -8,7 +8,7 @@ export const Story: React.FC = () => {
       {/* Background Soft Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-noir-850/30 rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
         {/* Section Header Meta */}
         <div className="flex items-center space-x-3 mb-10">
@@ -25,7 +25,7 @@ export const Story: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.88]"
+            className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]"
           >
             WEAR THE <br />
             <span className="font-editorial italic font-normal text-noir-200">NIGHT.</span>
@@ -39,7 +39,7 @@ export const Story: React.FC = () => {
       </div>
 
       {/* 2. Full-Width Panoramic Visual Break */}
-      <div className="relative w-full aspect-[21/9] sm:aspect-[2.4/1] my-16 md:my-24 overflow-hidden border-y border-white/10 bg-noir-900 group">
+      <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.4/1] min-h-[220px] sm:min-h-0 my-16 md:my-24 overflow-hidden border-y border-white/10 bg-noir-900 group">
         <img
           src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=85&w=2400"
           alt="NOIRÉ Studio Atmosphere"
@@ -49,17 +49,17 @@ export const Story: React.FC = () => {
         <div className="absolute inset-0 bg-grain" />
 
         {/* Panoramic Text Overlay */}
-        <div className="absolute bottom-6 left-6 md:left-12 max-w-lg">
+        <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-12 right-4 sm:right-auto max-w-lg">
           <span className="text-[10px] font-mono tracking-widest text-noir-400 uppercase block">
             NOIRÉ STUDIO // DESIGN PROCESS
           </span>
-          <p className="font-display text-lg sm:text-xl font-bold text-white mt-1">
+          <p className="font-display text-base sm:text-xl font-bold text-white mt-1">
             Where architectural cuts meet functional daily movement.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
         {/* 3. Oversized Statement Two: "MADE FOR MOVEMENT." */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start my-16 md:my-28">
@@ -69,7 +69,7 @@ export const Story: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="font-display text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.05em] text-white leading-tight"
+              className="font-display text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.05em] text-white leading-tight"
             >
               MADE FOR <br />
               <span className="font-editorial italic font-normal text-noir-200">MOVEMENT.</span>

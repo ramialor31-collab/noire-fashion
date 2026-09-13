@@ -14,25 +14,25 @@ export const SizeGuideModal: React.FC<SizeGuideModalProps> = ({ isOpen, onClose,
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-noir-950/80 backdrop-blur-md">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-noir-950/80 backdrop-blur-md overflow-y-auto">
         <div className="absolute inset-0" onClick={onClose} />
         
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
-          className="relative w-full max-w-lg bg-noir-900 border border-white/10 p-6 md:p-8 rounded-sm shadow-2xl z-10"
+          className="relative w-full max-w-lg bg-noir-900 border border-white/10 p-4 sm:p-6 md:p-8 rounded-sm shadow-2xl z-10 my-auto max-h-[90vh] overflow-y-auto"
         >
           <div className="flex items-center justify-between pb-4 border-b border-white/[0.08]">
             <div>
-              <span className="font-display text-xl font-bold text-white block">SIZE & FIT GUIDE</span>
+              <span className="font-display text-lg sm:text-xl font-bold text-white block">SIZE & FIT GUIDE</span>
               {product && (
                 <span className="text-xs font-mono text-noir-400 mt-0.5 block">{product.name}</span>
               )}
             </div>
             <button 
               onClick={onClose} 
-              className="text-noir-400 hover:text-white transition-colors p-1"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center text-noir-400 hover:text-white transition-colors p-1"
               aria-label="Close size guide"
             >
               <X className="w-5 h-5" />
@@ -60,14 +60,14 @@ export const SizeGuideModal: React.FC<SizeGuideModalProps> = ({ isOpen, onClose,
           </div>
 
           {/* Standard International Size Reference */}
-          <div className="border border-white/10 rounded-xs overflow-hidden">
-            <table className="w-full text-xs font-mono text-left border-collapse">
+          <div className="border border-white/10 rounded-xs overflow-x-auto">
+            <table className="w-full text-xs font-mono text-left border-collapse min-w-[280px]">
               <thead>
                 <tr className="bg-noir-950 border-b border-white/10 text-noir-400 uppercase text-[10px]">
-                  <th className="py-2.5 px-3">SIZE</th>
-                  <th className="py-2.5 px-3">US / UK</th>
-                  <th className="py-2.5 px-3">EU</th>
-                  <th className="py-2.5 px-3">RECOMMENDED FIT</th>
+                  <th className="py-2.5 px-2.5 sm:px-3 whitespace-nowrap">SIZE</th>
+                  <th className="py-2.5 px-2.5 sm:px-3 whitespace-nowrap">US / UK</th>
+                  <th className="py-2.5 px-2.5 sm:px-3 whitespace-nowrap">EU</th>
+                  <th className="py-2.5 px-2.5 sm:px-3 whitespace-nowrap">RECOMMENDED FIT</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/[0.04] text-noir-200">

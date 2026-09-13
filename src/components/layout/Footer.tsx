@@ -12,7 +12,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer className="relative w-full bg-noir-950 border-t border-white/10 pt-16 pb-12 overflow-hidden text-noir-400">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         
         {/* Main Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
@@ -40,22 +40,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               EXPERIENCE
             </span>
             <div>
-              <button onClick={() => onNavigate('hero')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('hero')} className="hover:text-white transition-colors py-1 inline-block">
                 CAMPAIGN
               </button>
             </div>
             <div>
-              <button onClick={() => onNavigate('collection')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('collection')} className="hover:text-white transition-colors py-1 inline-block">
                 COLLECTION 01
               </button>
             </div>
             <div>
-              <button onClick={() => onNavigate('shop')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('shop')} className="hover:text-white transition-colors py-1 inline-block">
                 SHOP ALL
               </button>
             </div>
             <div>
-              <button onClick={() => onNavigate('story')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('story')} className="hover:text-white transition-colors py-1 inline-block">
                 BRAND MANIFESTO
               </button>
             </div>
@@ -67,22 +67,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               CLIENT SERVICES
             </span>
             <div>
-              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors py-1 inline-block">
                 CLIENT SERVICES
               </button>
             </div>
             <div>
-              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors py-1 inline-block">
                 RELEASE UPDATES
               </button>
             </div>
             <div>
-              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors py-1 inline-block">
                 SHIPPING & RETURNS
               </button>
             </div>
             <div>
-              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors">
+              <button onClick={() => onNavigate('contact')} className="hover:text-white transition-colors py-1 inline-block">
                 AUTHENTICITY
               </button>
             </div>
@@ -99,7 +99,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="pt-2">
               <button
                 onClick={scrollToTop}
-                className="inline-flex items-center space-x-2 text-xs text-noir-300 hover:text-white transition-colors border border-white/10 px-3 py-1.5"
+                className="inline-flex items-center space-x-2 text-xs text-noir-300 hover:text-white transition-colors border border-white/10 px-3.5 py-2 min-h-[44px]"
               >
                 <span>BACK TO TOP</span>
                 <ArrowUp className="w-3.5 h-3.5" />
@@ -111,15 +111,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
         {/* Massive Watermark Signature */}
         <div className="border-t border-white/[0.06] pt-12 pb-6 overflow-hidden">
-          <span className="font-display font-extrabold text-7xl sm:text-9xl lg:text-[14rem] tracking-[-0.07em] leading-none text-white/[0.03] select-none block text-center whitespace-nowrap">
+          <span className="font-display font-extrabold text-6xl sm:text-9xl lg:text-[14rem] tracking-[-0.07em] leading-none text-white/[0.03] select-none block text-center whitespace-nowrap">
             NOIRÉ
           </span>
         </div>
 
         {/* Bottom Line */}
-        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-noir-500 gap-4">
+        <div className="border-t border-white/[0.06] pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-noir-500 gap-4 text-center sm:text-left">
           <p>© {new Date().getFullYear()} NOIRÉ. ALL RIGHTS RESERVED. FICTIONAL PORTFOLIO SHOWCASE.</p>
-          <div className="flex items-center space-x-6">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-x-6 gap-y-2">
             <span className="hover:text-noir-300 cursor-pointer">PRIVACY POLICY</span>
             <span className="hover:text-noir-300 cursor-pointer">TERMS OF SERVICE</span>
             <span className="hover:text-noir-300 cursor-pointer">COOKIE PREFERENCES</span>

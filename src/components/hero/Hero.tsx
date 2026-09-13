@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
       </motion.div>
 
       {/* Top Banner Meta */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center justify-between text-xs tracking-widest text-noir-400">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full flex items-center justify-between text-xs tracking-widest text-noir-400">
         <div className="flex items-center space-x-3">
           <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
           <span className="font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-noir-300">
@@ -61,7 +61,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
       </div>
 
       {/* Main Center Content: Rebalanced typography scale and generous breathing room */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full py-8 sm:py-12 md:py-16 flex flex-col items-start justify-center my-auto">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full py-8 sm:py-12 md:py-16 flex flex-col items-start justify-center my-auto">
         
         {/* Sub-label badge */}
         <motion.div
@@ -110,11 +110,11 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-6 sm:mt-8 md:mt-10 flex flex-wrap items-center gap-3 sm:gap-5"
+          className="mt-6 sm:mt-8 md:mt-10 w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5"
         >
           <button
             onClick={onExploreCollection}
-            className="group relative inline-flex items-center space-x-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:bg-luxe-smoke hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] focus:outline-none"
+            className="w-full sm:w-auto justify-center group relative inline-flex items-center space-x-3 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[44px] bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:bg-luxe-smoke hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] focus:outline-none"
           >
             <span>EXPLORE COLLECTION</span>
             <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -122,7 +122,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
 
           <button
             onClick={onExploreShop}
-            className="inline-flex items-center space-x-3 px-6 sm:px-8 py-3.5 sm:py-4 border border-white/20 bg-noir-950/40 backdrop-blur-md text-white font-sans text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:border-white/60 hover:bg-white/[0.06] focus:outline-none"
+            className="w-full sm:w-auto justify-center inline-flex items-center space-x-3 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[44px] border border-white/20 bg-noir-950/40 backdrop-blur-md text-white font-sans text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:border-white/60 hover:bg-white/[0.06] focus:outline-none"
           >
             <span>BROWSE CATALOG</span>
           </button>
@@ -130,7 +130,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex items-center justify-between">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full flex items-center justify-between">
         {/* Left: Soundscape Toggle */}
         <SoundToggle />
 

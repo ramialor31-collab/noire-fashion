@@ -74,18 +74,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-5xl bg-noir-900 border border-white/15 shadow-2xl rounded-none sm:rounded-xs overflow-hidden z-10 my-auto min-h-screen sm:min-h-0"
+            className="relative w-full max-w-5xl bg-noir-900 border border-white/15 shadow-2xl rounded-none sm:rounded-xs overflow-hidden z-10 my-auto max-h-[100dvh] sm:max-h-[92vh] flex flex-col"
           >
-            {/* Top Close Button with 44px comfortable touch target */}
+            {/* Top Close Button - fixed on mobile so it never scrolls off, absolute on desktop */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-20 min-w-[44px] min-h-[44px] p-2.5 text-noir-300 hover:text-white bg-noir-950/80 backdrop-blur-md rounded-full border border-white/15 transition-all duration-200 active:scale-95 flex items-center justify-center"
+              className="fixed sm:absolute top-3 right-3 sm:top-4 sm:right-4 z-30 min-w-[44px] min-h-[44px] p-2.5 text-noir-300 hover:text-white bg-noir-950/80 backdrop-blur-md rounded-full border border-white/15 transition-all duration-200 active:scale-95 flex items-center justify-center shadow-lg"
               aria-label="Close product view"
             >
               <X className="w-5 h-5" />
             </button>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 max-h-[92vh] overflow-y-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 max-h-[100dvh] sm:max-h-[92vh] overflow-y-auto">
               
               {/* Left Column: Connected Multi-Image Gallery */}
               <div className="lg:col-span-7 bg-noir-950 p-4 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/[0.08]">
@@ -136,7 +136,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="lg:col-span-5 p-6 sm:p-8 flex flex-col justify-between bg-noir-900"
+                className="lg:col-span-5 p-4 sm:p-6 lg:p-8 flex flex-col justify-between bg-noir-900"
               >
                 <div>
                   {/* 1. Category & Edition Meta */}
@@ -218,7 +218,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                           </button>
                         )}
                       </div>
-                      <div className="grid grid-cols-5 gap-2">
+                      <div className="grid grid-cols-5 gap-1.5 sm:gap-2">
                         {product.sizes.map((s) => {
                           const isSelected = selectedSize === s;
                           return (
@@ -240,20 +240,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                     </div>
 
                     {/* Quantity & Prominent ADD TO BAG Button */}
-                    <div className="pt-2 flex items-center gap-3">
+                    <div className="pt-2 flex items-center gap-2 sm:gap-3">
                       {/* Quantity Stepper with 44px touch targets */}
-                      <div className="flex items-center border border-white/20 bg-noir-950 text-white rounded-xs">
+                      <div className="flex items-center border border-white/20 bg-noir-950 text-white rounded-xs shrink-0">
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="w-11 h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
+                          className="w-9 sm:w-11 h-11 sm:h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
                           aria-label="Decrease quantity"
                         >
                           -
                         </button>
-                        <span className="w-9 text-center font-mono text-xs font-bold">{quantity}</span>
+                        <span className="w-7 sm:w-9 text-center font-mono text-xs font-bold">{quantity}</span>
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="w-11 h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
+                          className="w-9 sm:w-11 h-11 sm:h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
                           aria-label="Increase quantity"
                         >
                           +
@@ -263,7 +263,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       {/* Primary ADD TO BAG CTA Button */}
                       <button
                         onClick={handleAdd}
-                        className={`flex-1 min-h-[48px] py-3.5 px-6 text-xs font-sans font-bold tracking-widest uppercase transition-all duration-200 active:scale-[0.99] flex items-center justify-center space-x-2 shadow-2xl rounded-xs ${
+                        className={`flex-1 min-h-[44px] sm:min-h-[48px] py-3 px-3 sm:px-6 text-[11px] sm:text-xs font-sans font-bold tracking-wider sm:tracking-widest uppercase transition-all duration-200 active:scale-[0.99] flex items-center justify-center space-x-1.5 sm:space-x-2 shadow-2xl rounded-xs truncate ${
                           isAdded
                             ? 'bg-emerald-600 text-white shadow-[0_0_25px_rgba(16,185,129,0.3)]'
                             : 'bg-white text-noir-950 hover:bg-luxe-smoke hover:shadow-[0_0_25px_rgba(255,255,255,0.25)]'
@@ -271,13 +271,13 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       >
                         {isAdded ? (
                           <>
-                            <Check className="w-4 h-4" />
-                            <span>ADDED TO BAG</span>
+                            <Check className="w-4 h-4 shrink-0" />
+                            <span className="truncate">ADDED TO BAG</span>
                           </>
                         ) : (
                           <>
-                            <ShoppingBag className="w-4 h-4" />
-                            <span>ADD TO BAG • ${product.price * quantity}</span>
+                            <ShoppingBag className="w-4 h-4 shrink-0" />
+                            <span className="truncate">ADD TO BAG • ${product.price * quantity}</span>
                           </>
                         )}
                       </button>

@@ -24,10 +24,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-50 bg-noir-950/98 backdrop-blur-3xl flex flex-col justify-between px-6 sm:px-10 py-8 lg:hidden"
+      className="fixed inset-0 z-50 bg-noir-950/98 backdrop-blur-3xl flex flex-col justify-between px-5 sm:px-10 py-6 sm:py-8 lg:hidden overflow-y-auto"
     >
       {/* Top Header */}
-      <div className="flex items-center justify-between border-b border-white/[0.08] pb-6">
+      <div className="flex items-center justify-between border-b border-white/[0.08] pb-6 shrink-0">
         <div>
           <span className="font-display font-extrabold text-2xl tracking-tight text-white block">
             NOIRÉ
@@ -38,7 +38,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         </div>
         <button
           onClick={onClose}
-          className="p-2.5 text-noir-400 hover:text-white bg-white/[0.04] border border-white/10 rounded-full transition-colors"
+          className="min-w-[44px] min-h-[44px] p-2.5 text-noir-400 hover:text-white bg-white/[0.04] border border-white/10 rounded-full transition-colors flex items-center justify-center"
           aria-label="Close Navigation Menu"
         >
           <X className="w-5 h-5" />
@@ -46,7 +46,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       </div>
 
       {/* Main Staggered Links */}
-      <nav className="flex flex-col space-y-7 my-auto py-8">
+      <nav className="flex flex-col space-y-6 sm:space-y-7 my-auto py-6 sm:py-8 shrink-0">
         {links.map((link, idx) => {
           const isActive = activeSection === link.id;
           return (
@@ -56,19 +56,19 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.05 * idx, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => onNavigate(link.id)}
-              className="text-left group flex items-baseline justify-between py-1"
+              className="text-left group flex items-baseline justify-between py-1 min-h-[44px]"
             >
               <div className="flex items-baseline space-x-3">
                 <span className="text-xs font-mono text-noir-500">0{idx + 1}</span>
                 <span
-                  className={`font-display text-4xl sm:text-5xl font-extrabold tracking-tight transition-colors ${
+                  className={`font-display text-3xl sm:text-5xl font-extrabold tracking-tight transition-colors ${
                     isActive ? 'text-white' : 'text-noir-400 group-hover:text-white'
                   }`}
                 >
                   {link.label}
                 </span>
               </div>
-              <span className="text-xs font-mono text-noir-500 uppercase tracking-widest group-hover:text-white transition-colors">
+              <span className="hidden sm:inline text-xs font-mono text-noir-500 uppercase tracking-widest group-hover:text-white transition-colors">
                 EXPLORE →
               </span>
             </motion.button>
