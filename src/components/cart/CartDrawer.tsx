@@ -77,7 +77,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
               </div>
               <button
                 onClick={() => setIsCartOpen(false)}
-                className="w-9 h-9 flex items-center justify-center text-noir-400 hover:text-white rounded-full bg-white/[0.04] border border-white/10 transition-all duration-200 active:scale-95"
+                className="w-11 h-11 flex items-center justify-center text-noir-400 hover:text-white rounded-full bg-white/[0.04] border border-white/10 transition-all duration-200 active:scale-95"
                 aria-label="Close cart drawer"
               >
                 <X className="w-4 h-4" />
@@ -240,15 +240,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                     </div>
                   )}
                   <div className="flex items-center justify-between text-noir-400">
-                    <span>WORLDWIDE EXPRESS</span>
+                    <span>ESTIMATED DELIVERY</span>
                     <span className="text-white">
-                      {amountUntilFreeShipping === 0 ? 'COMPLIMENTARY' : '$25 USD'}
+                      {amountUntilFreeShipping === 0 ? 'COMPLIMENTARY' : 'CALCULATED AT CHECKOUT'}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm font-bold text-white pt-2 border-t border-white/10">
                     <span className="font-display text-base">ESTIMATED TOTAL</span>
                     <span className="font-mono text-base tracking-tight">
-                      ${total + (amountUntilFreeShipping === 0 ? 0 : 25)} USD
+                      ${total} USD
                     </span>
                   </div>
                 </div>
@@ -263,7 +263,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                 </button>
 
                 <p className="text-[10px] text-center text-noir-500 font-mono tracking-wide">
-                  TAXES & DUTIES INCLUDED • COMPLIMENTARY 14-DAY RETURNS
+                  TAXES & SHIPPING CALCULATED AT CHECKOUT
                 </p>
               </div>
             )}

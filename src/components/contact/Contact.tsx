@@ -19,7 +19,7 @@ export const Contact: React.FC = () => {
   const faqs = [
     {
       q: 'WHERE ARE NOIRÉ GARMENTS PRODUCED?',
-      a: 'NOIRÉ garments are manufactured with partner production facilities in Portugal, Italy, and Japan using custom-milled textiles and bespoke hardware.',
+      a: 'NOIRÉ garments are crafted in collaboration with specialized facilities across Portugal, Italy, the United States, and Japan using custom-milled textiles.',
     },
     {
       q: 'HOW DOES NOIRÉ SIZING FIT?',
@@ -27,11 +27,11 @@ export const Contact: React.FC = () => {
     },
     {
       q: 'WHAT ARE THE SHIPPING OPTIONS?',
-      a: 'We provide complimentary DHL Express shipping on orders over $300 USD. All orders are dispatched within 24 hours with full tracking.',
+      a: 'Available delivery options and carrier speeds are presented at checkout based on your destination address.',
     },
     {
       q: 'WHAT IS YOUR RETURN POLICY?',
-      a: 'We offer a 14-day return window on all unworn items with original tags intact. Pre-paid return labels are included with every shipment.',
+      a: 'Return instructions and eligibility guidance are provided prior to completing your order.',
     },
   ];
 

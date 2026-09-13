@@ -63,9 +63,11 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
         <div className="flex items-start space-x-3">
           <Calendar className="w-4 h-4 text-luxe-gold shrink-0 mt-0.5" />
           <div>
-            <span className="text-noir-400 uppercase text-[10px] block">ESTIMATED DISPATCH</span>
-            <span className="text-white font-medium">Within 24 Hours (Express)</span>
-            <p className="text-[11px] text-noir-500 mt-0.5">Estimated delivery in 2-4 business days.</p>
+            <span className="text-noir-400 uppercase text-[10px] block">DELIVERY METHOD</span>
+            <span className="text-white font-medium">
+              {data.shippingSpeed === 'express' ? 'Priority Express' : 'Standard Delivery'}
+            </span>
+            <p className="text-[11px] text-noir-500 mt-0.5">Simulated dispatch confirmation sent to your email.</p>
           </div>
         </div>
 

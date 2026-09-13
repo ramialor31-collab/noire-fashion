@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Check, ShoppingBag, ChevronDown, ShieldCheck, Truck, Sparkles } from 'lucide-react';
+import { X, Check, ShoppingBag, ChevronDown } from 'lucide-react';
 import type { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
 import { SizeGuideModal } from './SizeGuideModal';
@@ -18,7 +18,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
   const [quantity, setQuantity] = useState(1);
   const [isAdded, setIsAdded] = useState(false);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
-  const [openAccordion, setOpenAccordion] = useState<string | null>('material');
+  const [openAccordion, setOpenAccordion] = useState<string | null>('fit');
 
   useEffect(() => {
     if (product) {
@@ -27,7 +27,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
       setSelectedSize(product.sizes.includes('M') ? 'M' : product.sizes[0] || 'M');
       setQuantity(1);
       setIsAdded(false);
-      setOpenAccordion('material');
+      setOpenAccordion('fit');
     }
   }, [product]);
 
@@ -209,12 +209,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         <span className="text-noir-400 uppercase tracking-wider">
                           SIZE: <strong className="text-white font-medium">{selectedSize}</strong>
                         </span>
-                        <button
-                          onClick={() => setIsSizeGuideOpen(true)}
-                          className="text-noir-300 hover:text-white underline text-[11px] font-mono tracking-wider transition-colors"
-                        >
-                          SIZE GUIDE
-                        </button>
+                        {product.sizes.length > 1 && product.category !== 'ACCESSORIES' && (
+                          <button
+                            onClick={() => setIsSizeGuideOpen(true)}
+                            className="text-noir-300 hover:text-white underline text-[11px] font-mono tracking-wider transition-colors"
+                          >
+                            SIZE & FIT GUIDE
+                          </button>
+                        )}
                       </div>
                       <div className="grid grid-cols-5 gap-2">
                         {product.sizes.map((s) => {
@@ -243,7 +245,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       <div className="flex items-center border border-white/20 bg-noir-950 text-white rounded-xs">
                         <button
                           onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                          className="w-10 h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
+                          className="w-11 h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
                           aria-label="Decrease quantity"
                         >
                           -
@@ -251,7 +253,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         <span className="w-9 text-center font-mono text-xs font-bold">{quantity}</span>
                         <button
                           onClick={() => setQuantity(quantity + 1)}
-                          className="w-10 h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
+                          className="w-11 h-12 flex items-center justify-center text-xs font-mono text-noir-400 hover:text-white transition-colors duration-150 active:scale-90"
                           aria-label="Increase quantity"
                         >
                           +
@@ -281,77 +283,46 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       </button>
                     </div>
 
-                    {/* Micro Trust Indicators */}
-                    <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-noir-400 border-t border-white/[0.06] pt-3">
-                      <span className="flex items-center space-x-1.5">
-                        <Truck className="w-3.5 h-3.5 text-noir-300" />
-                        <span>Complimentary DHL Express over $300</span>
-                      </span>
-                      <span className="flex items-center space-x-1.5">
-                        <ShieldCheck className="w-3.5 h-3.5 text-noir-300" />
-                        <span>Authenticity Guarantee</span>
-                      </span>
-                    </div>
-
                   </div>
                 </div>
 
                 {/* 6. Clean Structured Product Specifications (Real Product Data Only) */}
                 <div className="mt-8 border-t border-white/[0.08] divide-y divide-white/[0.06] text-xs">
                   
-                  {/* Textile & Weight */}
-                  {product.details.material && (
-                    <div className="py-3">
-                      <button
-                        onClick={() => toggleAccordion('material')}
-                        className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
-                      >
-                        <span className="flex items-center space-x-2">
-                          <Sparkles className="w-3 h-3 text-luxe-gold" />
-                          <span>MATERIAL & FABRIC</span>
-                        </span>
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'material' ? 'rotate-180 text-white' : ''}`} />
-                      </button>
-                      {openAccordion === 'material' && (
-                        <div className="pt-2 text-noir-300 font-light space-y-1 text-xs leading-relaxed">
-                          <p>{product.details.material}</p>
-                        </div>
-                      )}
-                    </div>
-                  )}
-
-                  {/* Silhouette & Fit */}
+                  {/* Size & Fit */}
                   {product.details.fit && (
                     <div className="py-3">
                       <button
                         onClick={() => toggleAccordion('fit')}
                         className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
                       >
-                        <span>FIT & SIZING</span>
+                        <span>SIZE & FIT</span>
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'fit' ? 'rotate-180 text-white' : ''}`} />
                       </button>
                       {openAccordion === 'fit' && (
                         <div className="pt-2 text-noir-300 font-light space-y-1 text-xs leading-relaxed">
                           <p>{product.details.fit}</p>
-                          <p className="text-[11px] font-mono text-noir-500">Model is 187cm wearing size Large.</p>
                         </div>
                       )}
                     </div>
                   )}
 
-                  {/* Origin & Craft */}
-                  {product.details.origin && (
+                  {/* Materials & Details */}
+                  {product.details.material && (
                     <div className="py-3">
                       <button
-                        onClick={() => toggleAccordion('origin')}
+                        onClick={() => toggleAccordion('material')}
                         className="w-full flex items-center justify-between text-noir-300 hover:text-white font-mono uppercase tracking-widest text-[11px] transition-colors"
                       >
-                        <span>ORIGIN</span>
-                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'origin' ? 'rotate-180 text-white' : ''}`} />
+                        <span>MATERIALS & DETAILS</span>
+                        <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'material' ? 'rotate-180 text-white' : ''}`} />
                       </button>
-                      {openAccordion === 'origin' && (
-                        <div className="pt-2 text-noir-300 font-light space-y-1 text-xs leading-relaxed">
-                          <p>{product.details.origin}</p>
+                      {openAccordion === 'material' && (
+                        <div className="pt-2 text-noir-300 font-light space-y-1.5 text-xs leading-relaxed">
+                          <p>{product.details.material}</p>
+                          {product.details.origin && (
+                            <p className="text-[11px] font-mono text-noir-400">Craft Origin: {product.details.origin}</p>
+                          )}
                         </div>
                       )}
                     </div>
@@ -375,7 +346,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                     </div>
                   )}
 
-                  {/* Complimentary Delivery & Returns */}
+                  {/* Shipping & Returns Placeholder */}
                   <div className="py-3">
                     <button
                       onClick={() => toggleAccordion('shipping')}
@@ -385,9 +356,15 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'shipping' ? 'rotate-180 text-white' : ''}`} />
                     </button>
                     {openAccordion === 'shipping' && (
-                      <div className="pt-2 text-noir-300 font-light leading-relaxed space-y-1 text-xs">
-                        <p>Orders ship via DHL Express. Dispatched within 24 hours with full tracking.</p>
-                        <p>14-day complimentary returns on all unworn items with original tags intact.</p>
+                      <div className="pt-2.5 text-noir-300 font-light leading-relaxed space-y-3 text-xs">
+                        <div>
+                          <span className="block text-[10px] font-mono text-noir-400 uppercase tracking-wider mb-0.5">SHIPPING</span>
+                          <p className="text-noir-300">Delivery information and rates will be provided at checkout.</p>
+                        </div>
+                        <div>
+                          <span className="block text-[10px] font-mono text-noir-400 uppercase tracking-wider mb-0.5">RETURNS</span>
+                          <p className="text-noir-300">Return policy details will be provided before completing your order.</p>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -401,7 +378,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
         </div>
       </AnimatePresence>
 
-      <SizeGuideModal isOpen={isSizeGuideOpen} onClose={() => setIsSizeGuideOpen(false)} />
+      <SizeGuideModal isOpen={isSizeGuideOpen} onClose={() => setIsSizeGuideOpen(false)} product={product} />
     </>
   );
 };

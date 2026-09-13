@@ -89,14 +89,14 @@ export const CheckoutModal: React.FC = () => {
   // Process Simulated Payment
   const handleSimulatePayment = () => {
     setIsProcessing(true);
-    setProcessingStatus('INITIALIZING SECURE DEMO GATEWAY...');
+    setProcessingStatus('PROCESSING SIMULATED ORDER...');
 
     setTimeout(() => {
-      setProcessingStatus('VERIFYING ENCRYPTED TOKENS...');
+      setProcessingStatus('GENERATING ORDER CONFIRMATION...');
     }, 900);
 
     setTimeout(() => {
-      setProcessingStatus('PAYMENT SIMULATED • ORDER AUTHORIZED');
+      setProcessingStatus('ORDER SIMULATION COMPLETE');
     }, 1800);
 
     setTimeout(() => {
@@ -165,7 +165,7 @@ export const CheckoutModal: React.FC = () => {
 
             <button
               onClick={() => setIsCheckoutOpen(false)}
-              className="p-1.5 text-noir-400 hover:text-white transition-colors"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center text-noir-400 hover:text-white transition-colors"
               aria-label="Close checkout"
             >
               <X className="w-5 h-5" />
