@@ -300,8 +300,18 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                         <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openAccordion === 'fit' ? 'rotate-180 text-white' : ''}`} />
                       </button>
                       {openAccordion === 'fit' && (
-                        <div className="pt-2 text-noir-300 font-light space-y-1 text-xs leading-relaxed">
+                        <div className="pt-2 text-noir-300 font-light space-y-2 text-xs leading-relaxed">
                           <p>{product.details.fit}</p>
+                          {product.sizes.length > 1 && product.category !== 'ACCESSORIES' && (
+                            <div className="pt-1">
+                              <button
+                                onClick={() => setIsSizeGuideOpen(true)}
+                                className="text-white hover:underline text-[11px] font-mono tracking-wider transition-colors inline-flex items-center space-x-1"
+                              >
+                                <span>VIEW SIZE GUIDE →</span>
+                              </button>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -359,11 +369,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
                       <div className="pt-2.5 text-noir-300 font-light leading-relaxed space-y-3 text-xs">
                         <div>
                           <span className="block text-[10px] font-mono text-noir-400 uppercase tracking-wider mb-0.5">SHIPPING</span>
-                          <p className="text-noir-300">Delivery information and rates will be provided at checkout.</p>
+                          <p className="text-noir-300">Delivery information will be provided at checkout.</p>
                         </div>
                         <div>
                           <span className="block text-[10px] font-mono text-noir-400 uppercase tracking-wider mb-0.5">RETURNS</span>
-                          <p className="text-noir-300">Return policy details will be provided before completing your order.</p>
+                          <p className="text-noir-300">Return information will be provided before completing your order.</p>
                         </div>
                       </div>
                     )}

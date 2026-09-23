@@ -105,6 +105,10 @@ export const SizeGuideModal: React.FC<SizeGuideModalProps> = ({ isOpen, onClose,
             </table>
           </div>
 
+          <p className="mt-2.5 text-[10px] font-mono text-noir-500">
+            Standard international conversion guide. Specific garment measurements vary by silhouette.
+          </p>
+
           <div className="mt-6 pt-4 border-t border-white/[0.08] flex justify-end">
             <button
               onClick={onClose}
