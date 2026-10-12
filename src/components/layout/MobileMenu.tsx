@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { X, ArrowUpRight, Globe, ShoppingBag } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 
@@ -19,13 +18,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   const { setIsCartOpen, itemCount } = useCart();
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="fixed inset-0 z-50 bg-noir-950/98 backdrop-blur-3xl flex flex-col justify-between px-5 sm:px-10 py-6 sm:py-8 lg:hidden overflow-y-auto"
-    >
+    <div className="fixed inset-0 z-50 bg-noir-950/98 backdrop-blur-3xl flex flex-col justify-between px-5 sm:px-10 py-6 sm:py-8 lg:hidden overflow-y-auto animate-fade-in">
       {/* Top Header */}
       <div className="flex items-center justify-between border-b border-white/[0.08] pb-6 shrink-0">
         <div>
@@ -50,13 +43,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         {links.map((link, idx) => {
           const isActive = activeSection === link.id;
           return (
-            <motion.button
+            <button
               key={link.id}
-              initial={{ opacity: 0, x: -25 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.05 * idx, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               onClick={() => onNavigate(link.id)}
-              className="text-left group flex items-baseline justify-between py-1 min-h-[44px]"
+              className="text-left group flex items-baseline justify-between py-1 min-h-[44px] transition-transform duration-200 active:translate-x-1"
             >
               <div className="flex items-baseline space-x-3">
                 <span className="text-xs font-mono text-noir-500">0{idx + 1}</span>
@@ -71,20 +61,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               <span className="hidden sm:inline text-xs font-mono text-noir-500 uppercase tracking-widest group-hover:text-white transition-colors">
                 EXPLORE →
               </span>
-            </motion.button>
+            </button>
           );
         })}
 
         {/* Direct Bag Drawer Trigger */}
-        <motion.button
-          initial={{ opacity: 0, x: -25 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 0.25, duration: 0.35 }}
+        <button
           onClick={() => {
             onClose();
             setIsCartOpen(true);
           }}
-          className="text-left group pt-6 flex items-center justify-between border-t border-white/[0.08]"
+          className="text-left group pt-6 flex items-center justify-between border-t border-white/[0.08] min-h-[44px]"
         >
           <div className="flex items-center space-x-3">
             <ShoppingBag className="w-5 h-5 text-white" />
@@ -95,7 +82,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           <span className="px-3 py-1 text-xs font-mono bg-white text-noir-950 font-bold rounded-full">
             {itemCount} {itemCount === 1 ? 'ITEM' : 'ITEMS'}
           </span>
-        </motion.button>
+        </button>
       </nav>
 
       {/* Footer Details */}
@@ -125,6 +112,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           </span>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };

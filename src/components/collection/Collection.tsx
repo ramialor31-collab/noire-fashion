@@ -21,9 +21,9 @@ export const Collection = memo<CollectionProps>(({
   return (
     <section id="collection" className="relative w-full bg-noir-950 py-20 md:py-32 border-t border-white/[0.06] overflow-hidden">
       
-      {/* Background Subtle Atmosphere */}
-      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-noir-800/15 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-noir-800/15 rounded-full blur-[140px] pointer-events-none" />
+      {/* Background Subtle Atmosphere (Clean radial gradient, zero GPU blur calculation) */}
+      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-[radial-gradient(circle,_rgba(255,255,255,0.02)_0%,_transparent_70%)] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-[radial-gradient(circle,_rgba(255,255,255,0.02)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         

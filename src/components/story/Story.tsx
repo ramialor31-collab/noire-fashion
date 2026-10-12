@@ -1,12 +1,11 @@
 import { memo } from 'react';
-import { motion } from 'framer-motion';
 
 export const Story = memo(() => {
   return (
     <section id="story" className="relative w-full bg-noir-950 py-24 md:py-36 border-t border-white/[0.06] overflow-hidden">
       
-      {/* Background Soft Glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-noir-850/30 rounded-full blur-[160px] pointer-events-none" />
+      {/* Background Soft Glow (Clean Radial Gradient without GPU Blur pass) */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.03)_0%,_transparent_70%)] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         
@@ -20,16 +19,10 @@ export const Story = memo(() => {
 
         {/* 1. Oversized Statement One: "WEAR THE NIGHT." */}
         <div className="mb-16 md:mb-24 max-w-5xl">
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]"
-          >
+          <h2 className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]">
             WEAR THE <br />
             <span className="font-editorial italic font-normal text-noir-200">NIGHT.</span>
-          </motion.h2>
+          </h2>
 
           <p className="mt-8 text-base sm:text-xl md:text-2xl text-noir-200 font-light max-w-2xl leading-relaxed">
             “NOIRÉ was created around a single conviction: clothing should feel as deliberate as the person wearing it.”
@@ -48,7 +41,6 @@ export const Story = memo(() => {
           decoding="async"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-transparent to-noir-950 pointer-events-none" />
-        <div className="absolute inset-0 bg-grain pointer-events-none" />
 
         {/* Panoramic Text Overlay */}
         <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-12 right-4 sm:right-auto max-w-lg">
@@ -66,16 +58,10 @@ export const Story = memo(() => {
         {/* 3. Oversized Statement Two: "MADE FOR MOVEMENT." */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start my-16 md:my-28">
           <div className="lg:col-span-7">
-            <motion.h3
-              initial={{ opacity: 0, y: 25 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
-              transition={{ duration: 0.8 }}
-              className="font-display text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.05em] text-white leading-tight"
-            >
+            <h3 className="font-display text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.05em] text-white leading-tight">
               MADE FOR <br />
               <span className="font-editorial italic font-normal text-noir-200">MOVEMENT.</span>
-            </motion.h3>
+            </h3>
           </div>
 
           <div className="lg:col-span-5 space-y-4 pt-2">

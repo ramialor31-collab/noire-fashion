@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ShoppingBag, Menu, X } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { MobileMenu } from './MobileMenu';
@@ -56,11 +55,7 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
                     {link.label}
                   </span>
                   {isActive && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="absolute -bottom-1 left-0 right-0 h-[1px] bg-white"
-                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                    />
+                    <span className="absolute -bottom-1 left-0 right-0 h-[1px] bg-white transition-all duration-300" />
                   )}
                   {!isActive && (
                     <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white/40 transition-all duration-300 group-hover:w-full" />
@@ -108,13 +103,9 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
               <div className="relative">
                 <ShoppingBag className="w-4 h-4 text-noir-300 transition-transform duration-300 group-hover:scale-110 group-hover:text-white" />
                 {itemCount > 0 && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-white text-noir-950 text-[9px] font-bold rounded-full flex items-center justify-center shadow-lg"
-                  >
+                  <span className="absolute -top-1.5 -right-1.5 w-3.5 h-3.5 bg-white text-noir-950 text-[9px] font-bold rounded-full flex items-center justify-center shadow-lg animate-fade-in">
                     {itemCount}
-                  </motion.span>
+                  </span>
                 )}
               </div>
               <span className="hidden sm:inline font-medium">
@@ -139,19 +130,17 @@ export const Navigation: React.FC<NavigationProps> = ({ activeSection, onNavigat
       </header>
 
       {/* Mobile Navigation Drawer */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <MobileMenu
-            links={navLinks}
-            activeSection={activeSection}
-            onNavigate={(id) => {
-              setIsMobileMenuOpen(false);
-              onNavigate(id);
-            }}
-            onClose={() => setIsMobileMenuOpen(false)}
-          />
-        )}
-      </AnimatePresence>
+      {isMobileMenuOpen && (
+        <MobileMenu
+          links={navLinks}
+          activeSection={activeSection}
+          onNavigate={(id) => {
+            setIsMobileMenuOpen(false);
+            onNavigate(id);
+          }}
+          onClose={() => setIsMobileMenuOpen(false)}
+        />
+      )}
     </>
   );
 };

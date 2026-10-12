@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { CartProvider, useCart } from './context/CartContext';
 import { PRODUCTS } from './data/products';
 import type { Product } from './types';
-import { CustomCursor } from './components/layout/CustomCursor';
+// import { CustomCursor } from './components/layout/CustomCursor';
 import { Navigation } from './components/layout/Navigation';
 import { Hero } from './components/hero/Hero';
 import { Collection } from './components/collection/Collection';
@@ -84,10 +84,7 @@ const MainExperience = () => {
   }, [setActiveProductDetail]);
 
   return (
-    <div className="relative min-h-screen bg-noir-950 text-white selection:bg-white selection:text-noir-950 font-sans cursor-custom-area">
-      {/* Non-intrusive luxury custom cursor */}
-      <CustomCursor />
-
+    <div className="relative min-h-screen bg-noir-950 text-white selection:bg-white selection:text-noir-950 font-sans">
       {/* Persistent Navigation Header */}
       <Navigation
         activeSection={activeSection}

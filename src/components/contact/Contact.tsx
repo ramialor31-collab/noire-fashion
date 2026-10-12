@@ -1,5 +1,4 @@
 import { useState, memo } from 'react';
-import { motion } from 'framer-motion';
 import { Mail, ChevronDown, ChevronUp, Check, Sparkles } from 'lucide-react';
 
 export const Contact = memo(() => {
@@ -49,16 +48,10 @@ export const Contact = memo(() => {
 
         {/* Minimal Large Closing Statement */}
         <div className="mb-16 md:mb-24">
-          <motion.h2 
-            initial={{ opacity: 0, y: 25 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
-            transition={{ duration: 0.8 }}
-            className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]"
-          >
+          <h2 className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]">
             SEE YOU <br />
             <span className="font-editorial italic font-normal text-noir-200">AFTER DARK.</span>
-          </motion.h2>
+          </h2>
         </div>
 
         {/* Minimal Grid: VIP Pass & Clean Concierge Info */}
@@ -159,13 +152,9 @@ export const Contact = memo(() => {
                     </button>
 
                     {isOpen && (
-                      <motion.p
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        className="mt-3 text-xs sm:text-sm text-noir-300 font-light leading-relaxed pr-6"
-                      >
+                      <p className="mt-3 text-xs sm:text-sm text-noir-300 font-light leading-relaxed pr-6 animate-fade-in">
                         {faq.a}
-                      </motion.p>
+                      </p>
                     )}
                   </div>
                 );

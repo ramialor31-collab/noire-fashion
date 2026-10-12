@@ -1,5 +1,4 @@
 import { useState, useEffect, memo } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { SoundToggle } from './SoundToggle';
 
@@ -35,17 +34,10 @@ const ClockDisplay = memo(() => {
 ClockDisplay.displayName = 'ClockDisplay';
 
 export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => {
-  const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 800], [0, 180]);
-  const opacityFade = useTransform(scrollY, [0, 600], [1, 0.15]);
-
   return (
     <section id="hero" className="relative w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between overflow-hidden bg-noir-950 pt-24 md:pt-28 pb-8 md:pb-12">
-      {/* Background Photography with Parallax & Gradients */}
-      <motion.div
-        style={{ y: yParallax, opacity: opacityFade }}
-        className="absolute inset-0 z-0 pointer-events-none will-change-transform"
-      >
+      {/* Background Photography with Pure CSS Gradients (Zero Scroll Thread Overhead) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <img
           src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920"
           srcSet="
@@ -55,15 +47,14 @@ export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => 
           "
           sizes="100vw"
           alt="NOIRÉ Autumn-Winter Campaign"
-          className="w-full h-full object-cover object-center filter grayscale contrast-[1.2] brightness-[0.45] scale-105"
+          className="w-full h-full object-cover object-center filter grayscale contrast-[1.15] brightness-[0.45]"
           fetchPriority="high"
           decoding="async"
         />
         {/* Soft Vignettes & Atmospheric Lighting */}
         <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-noir-950/30 to-noir-950/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-noir-950/80 via-transparent to-noir-950/70" />
-        <div className="absolute inset-0 bg-grain pointer-events-none" />
-      </motion.div>
+      </div>
 
       {/* Top Banner Meta */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full flex items-center justify-between text-xs tracking-widest text-noir-400">
@@ -76,41 +67,26 @@ export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => 
         <ClockDisplay />
       </div>
 
-      {/* Main Center Content: Rebalanced typography scale and generous breathing room */}
+      {/* Main Center Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 w-full py-8 sm:py-12 md:py-16 flex flex-col items-start justify-center my-auto">
         
         {/* Sub-label badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
-          className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md mb-4 sm:mb-6"
-        >
-          <Sparkles className="w-3 h-3 text-luxe-gold" />
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md mb-4 sm:mb-6 animate-fade-in">
+          <Sparkles className="w-3.5 h-3.5 text-luxe-gold" />
           <span className="text-[10px] font-mono tracking-widest uppercase text-noir-200">
             AUTUMN-WINTER 2026 // COLLECTION 01
           </span>
-        </motion.div>
+        </div>
 
         {/* Oversized Brand Typography */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          className="w-full"
-        >
+        <div className="w-full animate-fade-in">
           <h1 className="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl lg:text-[8.5rem] xl:text-[9.5rem] tracking-[-0.07em] leading-[0.85] text-white select-none">
             NOIRÉ
           </h1>
-        </motion.div>
+        </div>
 
         {/* Core Message Headline */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45 }}
-          className="mt-4 sm:mt-6 max-w-2xl"
-        >
+        <div className="mt-4 sm:mt-6 max-w-2xl animate-fade-in">
           <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight text-noir-100 leading-tight">
             BUILT FOR THE <br />
             <span className="font-editorial italic font-normal text-white">AFTER HOURS.</span>
@@ -119,15 +95,10 @@ export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => 
           <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-noir-300 font-light max-w-md leading-relaxed">
             Contemporary luxury streetwear cut from heavyweight custom textiles and architectural silhouettes.
           </p>
-        </motion.div>
+        </div>
 
         {/* Action CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.65 }}
-          className="mt-6 sm:mt-8 md:mt-10 w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5"
-        >
+        <div className="mt-6 sm:mt-8 md:mt-10 w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-5 animate-fade-in">
           <button
             onClick={onExploreCollection}
             className="w-full sm:w-auto justify-center group relative inline-flex items-center space-x-3 px-6 sm:px-8 py-3.5 sm:py-4 min-h-[44px] bg-white text-noir-950 font-sans text-xs font-bold tracking-widest uppercase transition-all duration-300 hover:bg-luxe-smoke hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] focus:outline-none"
@@ -142,7 +113,7 @@ export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => 
           >
             <span>BROWSE CATALOG</span>
           </button>
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom Bar */}
@@ -160,11 +131,7 @@ export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => 
             SCROLL TO EXPLORE
           </span>
           <div className="w-[1px] h-8 bg-noir-700 relative overflow-hidden">
-            <motion.div
-              animate={{ y: [0, 32, 0] }}
-              transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-              className="w-full h-2.5 bg-white"
-            />
+            <div className="w-full h-3 bg-white animate-pulse" />
           </div>
         </button>
 

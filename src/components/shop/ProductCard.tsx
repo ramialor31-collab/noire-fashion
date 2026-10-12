@@ -10,6 +10,19 @@ interface ProductCardProps {
   isPriority?: boolean;
 }
 
+// Responsive srcSet generator for local WebP and external sources
+const getSrcSet = (src: string) => {
+  if (src.endsWith('.webp') && !src.includes('-600w.webp')) {
+    const smallSrc = src.replace('.webp', '-600w.webp');
+    return `${smallSrc} 600w, ${src} 1200w`;
+  }
+  if (src.includes('images.unsplash.com')) {
+    const base = src.split('?')[0];
+    return `${base}?auto=format&fit=crop&q=75&w=600 600w, ${base}?auto=format&fit=crop&q=75&w=1000 1000w`;
+  }
+  return undefined;
+};
+
 export const ProductCard = memo<ProductCardProps>(({
   product,
   onSelect,
@@ -46,6 +59,10 @@ export const ProductCard = memo<ProductCardProps>(({
         {!imageError ? (
           <img
             src={product.images[0]}
+            srcSet={getSrcSet(product.images[0])}
+            sizes={isSpotlight ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+            width={600}
+            height={800}
             alt={product.name}
             className="w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
             loading={isPriority || isSpotlight ? 'eager' : 'lazy'}
@@ -64,6 +81,10 @@ export const ProductCard = memo<ProductCardProps>(({
         {!imageError && hasMultipleImages && (
           <img
             src={product.images[1]}
+            srcSet={getSrcSet(product.images[1])}
+            sizes={isSpotlight ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"}
+            width={600}
+            height={800}
             alt={`${product.name} alternate angle`}
             className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 pointer-events-none transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-[1.03]"
             loading="lazy"
