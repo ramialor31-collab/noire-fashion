@@ -1,5 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { useState, useMemo, memo } from 'react';
 import { SlidersHorizontal, Grid3X3, LayoutGrid } from 'lucide-react';
 import type { Product, ProductCategory, SortOption } from '../../types';
 import { ProductCard } from './ProductCard';
@@ -19,7 +18,7 @@ const CATEGORIES: ProductCategory[] = [
   'ACCESSORIES',
 ];
 
-export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
+export const Shop = memo<ShopProps>(({ products, onSelectProduct }) => {
   const [selectedCategory, setSelectedCategory] = useState<ProductCategory>('ALL');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [layoutMode, setLayoutMode] = useState<'editorial' | 'compact'>('editorial');
@@ -168,6 +167,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
                   product={product} 
                   onSelect={onSelectProduct}
                   isSpotlight={idx === 0} // First piece is spotlight
+                  isPriority={idx < 2}
                 />
               ))}
             </div>
@@ -193,7 +193,7 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
                 <ProductCard 
                   key={product.id} 
                   product={product} 
-                  onSelect={onSelectProduct}
+                  onSelect={onSelectProduct} 
                   isSpotlight={idx === 2} // Another accent piece
                 />
               ))}
@@ -213,15 +213,14 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
         ) : (
           /* Standard / Filtered Grid */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <AnimatePresence>
-              {filteredProducts.map((product) => (
-                <ProductCard
-                  key={product.id}
-                  product={product}
-                  onSelect={onSelectProduct}
-                />
-              ))}
-            </AnimatePresence>
+            {filteredProducts.map((product, idx) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onSelect={onSelectProduct}
+                isPriority={idx < 4}
+              />
+            ))}
           </div>
         )}
 
@@ -242,4 +241,6 @@ export const Shop: React.FC<ShopProps> = ({ products, onSelectProduct }) => {
       </div>
     </section>
   );
-};
+});
+
+Shop.displayName = 'Shop';

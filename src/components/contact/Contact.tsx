@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, ChevronDown, ChevronUp, Check, Sparkles } from 'lucide-react';
 
-export const Contact: React.FC = () => {
+export const Contact = memo(() => {
   const [vipEmail, setVipEmail] = useState('');
   const [vipSuccess, setVipSuccess] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -52,7 +52,7 @@ export const Contact: React.FC = () => {
           <motion.h2 
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
             transition={{ duration: 0.8 }}
             className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]"
           >
@@ -178,4 +178,6 @@ export const Contact: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Contact.displayName = 'Contact';

@@ -1,7 +1,7 @@
-import React from 'react';
+import { memo } from 'react';
 import { motion } from 'framer-motion';
 
-export const Story: React.FC = () => {
+export const Story = memo(() => {
   return (
     <section id="story" className="relative w-full bg-noir-950 py-24 md:py-36 border-t border-white/[0.06] overflow-hidden">
       
@@ -23,7 +23,7 @@ export const Story: React.FC = () => {
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="font-display text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold tracking-[-0.06em] text-white leading-[0.9]"
           >
@@ -41,12 +41,14 @@ export const Story: React.FC = () => {
       {/* 2. Full-Width Panoramic Visual Break */}
       <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[2.4/1] min-h-[220px] sm:min-h-0 my-16 md:my-24 overflow-hidden border-y border-white/10 bg-noir-900 group">
         <img
-          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=85&w=2400"
+          src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=1800"
           alt="NOIRÉ Studio Atmosphere"
           className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 transition-transform duration-1000 group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-transparent to-noir-950" />
-        <div className="absolute inset-0 bg-grain" />
+        <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-transparent to-noir-950 pointer-events-none" />
+        <div className="absolute inset-0 bg-grain pointer-events-none" />
 
         {/* Panoramic Text Overlay */}
         <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 md:left-12 right-4 sm:right-auto max-w-lg">
@@ -67,7 +69,7 @@ export const Story: React.FC = () => {
             <motion.h3
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1, margin: "0px 0px -50px 0px" }}
               transition={{ duration: 0.8 }}
               className="font-display text-3xl sm:text-6xl md:text-7xl font-extrabold tracking-[-0.05em] text-white leading-tight"
             >
@@ -124,4 +126,6 @@ export const Story: React.FC = () => {
       </div>
     </section>
   );
-};
+});
+
+Story.displayName = 'Story';

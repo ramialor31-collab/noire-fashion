@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { memo } from 'react';
 import { ArrowRight, Eye, Plus, ShoppingBag } from 'lucide-react';
 import type { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
@@ -10,7 +9,7 @@ interface CollectionProps {
   onExploreShop: () => void;
 }
 
-export const Collection: React.FC<CollectionProps> = ({
+export const Collection = memo<CollectionProps>(({
   products,
   onSelectProduct,
   onExploreShop,
@@ -56,12 +55,12 @@ export const Collection: React.FC<CollectionProps> = ({
               className="lg:col-span-7 relative group overflow-hidden bg-noir-900 border border-white/10 rounded-xs cursor-pointer"
             >
               <div className="aspect-[4/5] sm:aspect-[16/11] lg:aspect-[4/5] w-full overflow-hidden">
-                <motion.img
-                  layoutId={`product-image-${heroProduct.id}`}
+                <img
                   src={heroProduct.images[0]}
                   alt={heroProduct.name}
                   className="w-full h-full object-cover object-center filter contrast-110 brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                  loading="eager"
+                  decoding="async"
                 />
               </div>
 
@@ -171,12 +170,12 @@ export const Collection: React.FC<CollectionProps> = ({
                   onClick={() => onSelectProduct(product)}
                   className="relative aspect-[3/4] overflow-hidden bg-noir-900 border border-white/[0.08] cursor-pointer"
                 >
-                  <motion.img
-                    layoutId={`product-image-${product.id}`}
+                  <img
                     src={product.images[0]}
                     alt={product.name}
                     className="w-full h-full object-cover object-center filter contrast-105 brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    loading="lazy"
+                    decoding="async"
                   />
 
                   {/* Secondary Image hover reveal with matching 1.03 scale */}
@@ -185,6 +184,8 @@ export const Collection: React.FC<CollectionProps> = ({
                       src={product.images[1]}
                       alt={`${product.name} alternate view`}
                       className="absolute inset-0 w-full h-full object-cover object-center filter contrast-105 brightness-95 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out pointer-events-none group-hover:scale-[1.03]"
+                      loading="lazy"
+                      decoding="async"
                     />
                   )}
 
@@ -253,4 +254,6 @@ export const Collection: React.FC<CollectionProps> = ({
       </div>
     </section>
   );
-};
+});
+
+Collection.displayName = 'Collection';

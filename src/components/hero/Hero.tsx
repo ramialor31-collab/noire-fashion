@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { SoundToggle } from './SoundToggle';
@@ -8,19 +8,16 @@ interface HeroProps {
   onExploreShop: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }) => {
-  const { scrollY } = useScroll();
-  const yParallax = useTransform(scrollY, [0, 800], [0, 180]);
-  const opacityFade = useTransform(scrollY, [0, 600], [1, 0.15]);
-
-  const [timeTokyo, setTimeTokyo] = useState('');
-  const [timeParis, setTimeParis] = useState('');
+const ClockDisplay = memo(() => {
+  const [times, setTimes] = useState({ tokyo: '', paris: '' });
 
   useEffect(() => {
     const updateClocks = () => {
       const now = new Date();
-      setTimeTokyo(now.toLocaleTimeString('en-US', { timeZone: 'Asia/Tokyo', hour12: false, hour: '2-digit', minute: '2-digit' }));
-      setTimeParis(now.toLocaleTimeString('en-US', { timeZone: 'Europe/Paris', hour12: false, hour: '2-digit', minute: '2-digit' }));
+      setTimes({
+        tokyo: now.toLocaleTimeString('en-US', { timeZone: 'Asia/Tokyo', hour12: false, hour: '2-digit', minute: '2-digit' }),
+        paris: now.toLocaleTimeString('en-US', { timeZone: 'Europe/Paris', hour12: false, hour: '2-digit', minute: '2-digit' }),
+      });
     };
     updateClocks();
     const interval = setInterval(updateClocks, 1000);
@@ -28,21 +25,44 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
   }, []);
 
   return (
+    <div className="hidden sm:flex items-center space-x-6 font-mono text-[10px] sm:text-[11px] text-noir-400">
+      <span>PARIS {times.paris}</span>
+      <span className="text-noir-600">/</span>
+      <span>TOKYO {times.tokyo}</span>
+    </div>
+  );
+});
+ClockDisplay.displayName = 'ClockDisplay';
+
+export const Hero = memo<HeroProps>(({ onExploreCollection, onExploreShop }) => {
+  const { scrollY } = useScroll();
+  const yParallax = useTransform(scrollY, [0, 800], [0, 180]);
+  const opacityFade = useTransform(scrollY, [0, 600], [1, 0.15]);
+
+  return (
     <section id="hero" className="relative w-full min-h-[92vh] sm:min-h-screen flex flex-col justify-between overflow-hidden bg-noir-950 pt-24 md:pt-28 pb-8 md:pb-12">
       {/* Background Photography with Parallax & Gradients */}
       <motion.div
         style={{ y: yParallax, opacity: opacityFade }}
-        className="absolute inset-0 z-0 pointer-events-none"
+        className="absolute inset-0 z-0 pointer-events-none will-change-transform"
       >
         <img
-          src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=85&w=2400"
+          src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920"
+          srcSet="
+            https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=900 900w,
+            https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1400 1400w,
+            https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=1920 1920w
+          "
+          sizes="100vw"
           alt="NOIRÉ Autumn-Winter Campaign"
           className="w-full h-full object-cover object-center filter grayscale contrast-[1.2] brightness-[0.45] scale-105"
+          fetchPriority="high"
+          decoding="async"
         />
         {/* Soft Vignettes & Atmospheric Lighting */}
         <div className="absolute inset-0 bg-gradient-to-t from-noir-950 via-noir-950/30 to-noir-950/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-noir-950/80 via-transparent to-noir-950/70" />
-        <div className="absolute inset-0 bg-grain" />
+        <div className="absolute inset-0 bg-grain pointer-events-none" />
       </motion.div>
 
       {/* Top Banner Meta */}
@@ -53,11 +73,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
             CAMPAIGN 01 // AUTUMN-WINTER 2026
           </span>
         </div>
-        <div className="hidden sm:flex items-center space-x-6 font-mono text-[10px] sm:text-[11px] text-noir-400">
-          <span>PARIS {timeParis}</span>
-          <span className="text-noir-600">/</span>
-          <span>TOKYO {timeTokyo}</span>
-        </div>
+        <ClockDisplay />
       </div>
 
       {/* Main Center Content: Rebalanced typography scale and generous breathing room */}
@@ -160,4 +176,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreCollection, onExploreShop }
       </div>
     </section>
   );
-};
+});
+
+Hero.displayName = 'Hero';

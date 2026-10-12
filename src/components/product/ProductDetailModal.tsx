@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Check, ShoppingBag, ChevronDown } from 'lucide-react';
 import type { Product } from '../../types';
@@ -10,8 +10,9 @@ interface ProductDetailModalProps {
   onClose: () => void;
 }
 
-export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product, onClose }) => {
+export const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps) => {
   const { addToCart } = useCart();
+  const [prevProductId, setPrevProductId] = useState<string | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
@@ -20,16 +21,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const [openAccordion, setOpenAccordion] = useState<string | null>('fit');
 
-  useEffect(() => {
-    if (product) {
-      setSelectedImageIndex(0);
-      setSelectedColor(product.colors[0]?.name || '');
-      setSelectedSize(product.sizes.includes('M') ? 'M' : product.sizes[0] || 'M');
-      setQuantity(1);
-      setIsAdded(false);
-      setOpenAccordion('fit');
-    }
-  }, [product]);
+  // Synchronize state during render when product prop changes, avoiding cascading effect renders
+  if (product && product.id !== prevProductId) {
+    setPrevProductId(product.id);
+    setSelectedImageIndex(0);
+    setSelectedColor(product.colors[0]?.name || '');
+    setSelectedSize(product.sizes.includes('M') ? 'M' : product.sizes[0] || 'M');
+    setQuantity(1);
+    setIsAdded(false);
+    setOpenAccordion('fit');
+  }
 
   // Handle escape key
   useEffect(() => {
@@ -91,12 +92,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ product,
               <div className="lg:col-span-7 bg-noir-950 p-4 sm:p-8 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/[0.08]">
                 {/* Main Shared Image Expansion */}
                 <div className="relative aspect-[3/4] w-full overflow-hidden bg-noir-900 border border-white/[0.08]">
-                  <motion.img
-                    layoutId={`product-image-${product.id}`}
+                  <img
                     src={product.images[selectedImageIndex] || product.images[0]}
                     alt={`${product.name} view ${selectedImageIndex + 1}`}
-                    className="w-full h-full object-cover object-center filter contrast-105 brightness-100"
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    className="w-full h-full object-cover object-center filter contrast-105 brightness-100 transition-opacity duration-300"
+                    decoding="async"
                   />
 
                   {product.badge && (

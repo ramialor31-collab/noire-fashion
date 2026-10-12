@@ -35,9 +35,8 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
   // Auto focus input on open
   useEffect(() => {
     if (isSearchOpen) {
-      setTimeout(() => inputRef.current?.focus(), 100);
-    } else {
-      setQuery('');
+      const timer = setTimeout(() => inputRef.current?.focus(), 100);
+      return () => clearTimeout(timer);
     }
   }, [isSearchOpen]);
 

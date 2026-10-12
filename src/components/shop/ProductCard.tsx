@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ShoppingBag, Eye, Check } from 'lucide-react';
+import { useState, memo, type MouseEvent } from 'react';
+import { ShoppingBag, Eye, Check, ImageOff } from 'lucide-react';
 import type { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
 
@@ -8,15 +7,21 @@ interface ProductCardProps {
   product: Product;
   onSelect: (product: Product) => void;
   isSpotlight?: boolean;
+  isPriority?: boolean;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isSpotlight = false }) => {
+export const ProductCard = memo<ProductCardProps>(({
+  product,
+  onSelect,
+  isSpotlight = false,
+  isPriority = false,
+}) => {
   const { addToCart } = useCart();
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || '');
   const [isAdded, setIsAdded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
-  const handleQuickAdd = (e: React.MouseEvent) => {
+  const handleQuickAdd = (e: MouseEvent) => {
     e.stopPropagation();
     const defaultSize = product.sizes.includes('M') ? 'M' : product.sizes[0];
     addToCart(product, selectedColor, defaultSize, 1);
@@ -29,8 +34,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
   return (
     <div
       onClick={() => onSelect(product)}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       className={`group flex flex-col justify-between bg-noir-950 border border-white/[0.08] hover:border-white/25 transition-colors duration-300 cursor-pointer overflow-hidden p-3.5 sm:p-5 ${
         isSpotlight ? 'md:col-span-2 md:flex-row gap-6 lg:gap-8 items-center' : ''
       }`}
@@ -39,27 +42,32 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
       <div className={`relative w-full overflow-hidden bg-noir-900 shrink-0 ${
         isSpotlight ? 'md:w-1/2 aspect-[4/5] sm:aspect-[16/11] md:aspect-[4/5]' : 'aspect-[3/4]'
       }`}>
-        {/* Primary Image with Shared Layout Animation & 1.03 scale */}
-        <motion.img
-          layoutId={`product-image-${product.id}`}
-          src={product.images[0]}
-          alt={product.name}
-          className={`w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 transition-transform duration-500 ease-out ${
-            isHovered ? 'scale-[1.03]' : 'scale-100'
-          }`}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          loading="lazy"
-        />
+        {/* Primary Image with instant CSS transform and zero layoutId collision */}
+        {!imageError ? (
+          <img
+            src={product.images[0]}
+            alt={product.name}
+            className="w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+            loading={isPriority || isSpotlight ? 'eager' : 'lazy'}
+            decoding="async"
+            onError={() => setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center bg-noir-900 border border-white/5 text-noir-500 p-4 text-center">
+            <ImageOff className="w-8 h-8 mb-2 opacity-50 text-noir-400" />
+            <span className="font-mono text-[10px] uppercase tracking-wider text-noir-400">{product.name}</span>
+            <span className="font-mono text-[9px] text-noir-600 mt-1">Image Archive Unavailable</span>
+          </div>
+        )}
 
         {/* Tasteful Secondary Image Reveal on Hover (Crossfade with matching scale) */}
-        {hasMultipleImages && (
+        {!imageError && hasMultipleImages && (
           <img
             src={product.images[1]}
             alt={`${product.name} alternate angle`}
-            className={`absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 pointer-events-none transition-all duration-500 ease-out ${
-              isHovered ? 'opacity-100 scale-[1.03]' : 'opacity-0 scale-100'
-            }`}
+            className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 pointer-events-none transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-[1.03]"
             loading="lazy"
+            decoding="async"
           />
         )}
 
@@ -185,4 +193,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onSelect, isS
       </div>
     </div>
   );
-};
+});
+
+ProductCard.displayName = 'ProductCard';

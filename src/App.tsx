@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, Suspense, lazy } from 'react';
 import { CartProvider, useCart } from './context/CartContext';
 import { PRODUCTS } from './data/products';
 import type { Product } from './types';
@@ -10,12 +10,22 @@ import { Shop } from './components/shop/Shop';
 import { Story } from './components/story/Story';
 import { Contact } from './components/contact/Contact';
 import { Footer } from './components/layout/Footer';
-import { ProductDetailModal } from './components/product/ProductDetailModal';
-import { CartDrawer } from './components/cart/CartDrawer';
-import { SearchModal } from './components/shop/SearchModal';
-import { CheckoutModal } from './components/checkout/CheckoutModal';
 
-const MainExperience: React.FC = () => {
+// Code-split heavy interactive overlays to keep the critical initial bundle lean
+const ProductDetailModal = lazy(() =>
+  import('./components/product/ProductDetailModal').then((m) => ({ default: m.ProductDetailModal }))
+);
+const CartDrawer = lazy(() =>
+  import('./components/cart/CartDrawer').then((m) => ({ default: m.CartDrawer }))
+);
+const SearchModal = lazy(() =>
+  import('./components/shop/SearchModal').then((m) => ({ default: m.SearchModal }))
+);
+const CheckoutModal = lazy(() =>
+  import('./components/checkout/CheckoutModal').then((m) => ({ default: m.CheckoutModal }))
+);
+
+const MainExperience = () => {
   const {
     activeProductDetail,
     setActiveProductDetail,
@@ -23,35 +33,55 @@ const MainExperience: React.FC = () => {
 
   const [activeSection, setActiveSection] = useState('hero');
 
-  // Scroll spy to update active section in Navigation
+  // Smooth and layout-thrash-free IntersectionObserver scroll spy
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['hero', 'collection', 'shop', 'story', 'contact'];
-      const scrollPosition = window.scrollY + 200;
+    const sections = ['hero', 'collection', 'shop', 'story', 'contact'];
+    const elements = sections
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
 
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
-          }
+    if (!('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          visible.sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+          setActiveSection(visible[0].target.id);
         }
+      },
+      {
+        rootMargin: '-20% 0px -45% 0px',
+        threshold: [0, 0.25, 0.5, 0.75],
       }
-    };
+    );
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    elements.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
-  const handleNavigate = (sectionId: string) => {
+  const handleNavigate = useCallback((sectionId: string) => {
     const el = document.getElementById(sectionId);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-  };
+  }, []);
+
+  const handleExploreCollection = useCallback(() => {
+    handleNavigate('collection');
+  }, [handleNavigate]);
+
+  const handleExploreShop = useCallback(() => {
+    handleNavigate('shop');
+  }, [handleNavigate]);
+
+  const handleSelectProduct = useCallback((p: Product) => {
+    setActiveProductDetail(p);
+  }, [setActiveProductDetail]);
+
+  const handleCloseProductDetail = useCallback(() => {
+    setActiveProductDetail(null);
+  }, [setActiveProductDetail]);
 
   return (
     <div className="relative min-h-screen bg-noir-950 text-white selection:bg-white selection:text-noir-950 font-sans cursor-custom-area">
@@ -66,21 +96,21 @@ const MainExperience: React.FC = () => {
 
       {/* 1. Fullscreen Hero Section */}
       <Hero
-        onExploreCollection={() => handleNavigate('collection')}
-        onExploreShop={() => handleNavigate('shop')}
+        onExploreCollection={handleExploreCollection}
+        onExploreShop={handleExploreShop}
       />
 
       {/* 2. Editorial Collection Showcase */}
       <Collection
         products={PRODUCTS}
-        onSelectProduct={(p: Product) => setActiveProductDetail(p)}
-        onExploreShop={() => handleNavigate('shop')}
+        onSelectProduct={handleSelectProduct}
+        onExploreShop={handleExploreShop}
       />
 
       {/* 3. Functional Shop Catalog */}
       <Shop
         products={PRODUCTS}
-        onSelectProduct={(p: Product) => setActiveProductDetail(p)}
+        onSelectProduct={handleSelectProduct}
       />
 
       {/* 4. Immersive Brand Story */}
@@ -92,22 +122,24 @@ const MainExperience: React.FC = () => {
       {/* 6. Architectural Footer */}
       <Footer onNavigate={handleNavigate} />
 
-      {/* Global Interactive Drawers and Overlays */}
-      <ProductDetailModal
-        product={activeProductDetail}
-        onClose={() => setActiveProductDetail(null)}
-      />
+      {/* Code-split Global Interactive Drawers and Overlays */}
+      <Suspense fallback={null}>
+        <ProductDetailModal
+          product={activeProductDetail}
+          onClose={handleCloseProductDetail}
+        />
 
-      <CartDrawer
-        onBrowseShop={() => handleNavigate('shop')}
-      />
+        <CartDrawer
+          onBrowseShop={handleExploreShop}
+        />
 
-      <SearchModal
-        products={PRODUCTS}
-        onSelectProduct={(p: Product) => setActiveProductDetail(p)}
-      />
+        <SearchModal
+          products={PRODUCTS}
+          onSelectProduct={handleSelectProduct}
+        />
 
-      <CheckoutModal />
+        <CheckoutModal />
+      </Suspense>
     </div>
   );
 };

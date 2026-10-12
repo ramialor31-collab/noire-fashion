@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import type { ReactNode } from 'react';
 import type { Product, CartItem, OrderConfirmationData } from '../types';
 
@@ -81,7 +81,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     }
   }, [promoCode]);
 
-  const addToCart = (product: Product, color: string, size: string, quantity = 1) => {
+  const addToCart = useCallback((product: Product, color: string, size: string, quantity = 1) => {
     setCart((prev) => {
       const itemKey = `${product.id}_${color}_${size}`;
       const existing = prev.find((item) => item.id === itemKey);
@@ -110,13 +110,13 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     // Automatically reveal cart drawer
     setIsCartOpen(true);
-  };
+  }, []);
 
-  const removeFromCart = (id: string) => {
+  const removeFromCart = useCallback((id: string) => {
     setCart((prev) => prev.filter((item) => item.id !== id));
-  };
+  }, []);
 
-  const updateQuantity = (id: string, delta: number) => {
+  const updateQuantity = useCallback((id: string, delta: number) => {
     setCart((prev) =>
       prev
         .map((item) => {
@@ -128,17 +128,19 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         })
         .filter(Boolean) as CartItem[]
     );
-  };
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     setCart([]);
     setPromoCode('');
-  };
+  }, []);
 
-  const discountPercentage = promoCode.toUpperCase() === 'NOIRE10' ? 10 : 
-                            promoCode.toUpperCase() === 'AFTERHOURS' ? 15 : 0;
+  const discountPercentage = useMemo(() => {
+    const code = promoCode.toUpperCase();
+    return code === 'NOIRE10' ? 10 : code === 'AFTERHOURS' ? 15 : 0;
+  }, [promoCode]);
 
-  const applyPromoCode = (code: string): { success: boolean; message: string } => {
+  const applyPromoCode = useCallback((code: string): { success: boolean; message: string } => {
     const trimmed = code.trim().toUpperCase();
     if (trimmed === 'NOIRE10') {
       setPromoCode('NOIRE10');
@@ -149,48 +151,68 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       return { success: true, message: 'After Hours Member Privilege: 15% Off' };
     }
     return { success: false, message: 'Invalid or expired campaign code. Try NOIRE10' };
-  };
+  }, []);
 
-  const removePromoCode = () => {
+  const removePromoCode = useCallback(() => {
     setPromoCode('');
-  };
+  }, []);
 
-  const itemCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-  const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  const discount = Math.round((subtotal * discountPercentage) / 100);
-  const amountUntilFreeShipping = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
-  const total = Math.max(0, subtotal - discount);
+  const itemCount = useMemo(() => cart.reduce((acc, item) => acc + item.quantity, 0), [cart]);
+  const subtotal = useMemo(() => cart.reduce((acc, item) => acc + item.price * item.quantity, 0), [cart]);
+  const discount = useMemo(() => Math.round((subtotal * discountPercentage) / 100), [subtotal, discountPercentage]);
+  const amountUntilFreeShipping = useMemo(() => Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal), [subtotal]);
+  const total = useMemo(() => Math.max(0, subtotal - discount), [subtotal, discount]);
+
+  const contextValue = useMemo<CartContextType>(() => ({
+    cart,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    itemCount,
+    subtotal,
+    discount,
+    discountPercentage,
+    promoCode,
+    applyPromoCode,
+    removePromoCode,
+    freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
+    amountUntilFreeShipping,
+    total,
+    isCartOpen,
+    setIsCartOpen,
+    isSearchOpen,
+    setIsSearchOpen,
+    isCheckoutOpen,
+    setIsCheckoutOpen,
+    activeProductDetail,
+    setActiveProductDetail,
+    latestConfirmation,
+    setLatestConfirmation,
+  }), [
+    cart,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+    itemCount,
+    subtotal,
+    discount,
+    discountPercentage,
+    promoCode,
+    applyPromoCode,
+    removePromoCode,
+    amountUntilFreeShipping,
+    total,
+    isCartOpen,
+    isSearchOpen,
+    isCheckoutOpen,
+    activeProductDetail,
+    latestConfirmation,
+  ]);
 
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-        itemCount,
-        subtotal,
-        discount,
-        discountPercentage,
-        promoCode,
-        applyPromoCode,
-        removePromoCode,
-        freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
-        amountUntilFreeShipping,
-        total,
-        isCartOpen,
-        setIsCartOpen,
-        isSearchOpen,
-        setIsSearchOpen,
-        isCheckoutOpen,
-        setIsCheckoutOpen,
-        activeProductDetail,
-        setActiveProductDetail,
-        latestConfirmation,
-        setLatestConfirmation,
-      }}
-    >
+    <CartContext.Provider value={contextValue}>
       {children}
     </CartContext.Provider>
   );
