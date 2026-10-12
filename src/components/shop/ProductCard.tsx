@@ -33,6 +33,13 @@ export const ProductCard = memo<ProductCardProps>(({
   const [selectedColor, setSelectedColor] = useState(product.colors[0]?.name || '');
   const [isAdded, setIsAdded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [prevProductId, setPrevProductId] = useState(product.id);
+
+  if (prevProductId !== product.id) {
+    setPrevProductId(product.id);
+    setImageError(false);
+    setSelectedColor(product.colors[0]?.name || '');
+  }
 
   const handleQuickAdd = (e: MouseEvent) => {
     e.stopPropagation();
@@ -89,6 +96,7 @@ export const ProductCard = memo<ProductCardProps>(({
             className="absolute inset-0 w-full h-full object-cover object-center filter contrast-[1.04] brightness-95 pointer-events-none transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:scale-[1.03]"
             loading="lazy"
             decoding="async"
+            onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
           />
         )}
 

@@ -128,6 +128,9 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({ onBrowseShop }) => {
                           src={item.image}
                           alt={item.name}
                           className="w-16 sm:w-20 aspect-[3/4] object-cover bg-noir-950 border border-white/10 shrink-0 rounded-xs"
+                          loading="lazy"
+                          decoding="async"
+                          onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
                         />
 
                         {/* Details */}

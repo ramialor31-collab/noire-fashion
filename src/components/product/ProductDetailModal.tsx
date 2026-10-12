@@ -97,6 +97,11 @@ export const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps
                     alt={`${product.name} view ${selectedImageIndex + 1}`}
                     className="w-full h-full object-cover object-center filter contrast-105 brightness-100 transition-opacity duration-300"
                     decoding="async"
+                    onError={() => {
+                      if (selectedImageIndex !== 0 && product.images[0]) {
+                        setSelectedImageIndex(0);
+                      }
+                    }}
                   />
 
                   {product.badge && (
@@ -124,6 +129,7 @@ export const ProductDetailModal = ({ product, onClose }: ProductDetailModalProps
                           src={img}
                           alt={`${product.name} angle ${idx + 1}`}
                           className="w-full h-full object-cover"
+                          onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
                         />
                       </button>
                     ))}

@@ -9,6 +9,19 @@ interface CollectionProps {
   onExploreShop: () => void;
 }
 
+// Responsive srcSet generator for local WebP and external sources
+const getSrcSet = (src: string) => {
+  if (src.endsWith('.webp') && !src.includes('-600w.webp')) {
+    const smallSrc = src.replace('.webp', '-600w.webp');
+    return `${smallSrc} 600w, ${src} 1200w`;
+  }
+  if (src.includes('images.unsplash.com')) {
+    const base = src.split('?')[0];
+    return `${base}?auto=format&fit=crop&q=75&w=600 600w, ${base}?auto=format&fit=crop&q=75&w=1000 1000w`;
+  }
+  return undefined;
+};
+
 export const Collection = memo<CollectionProps>(({
   products,
   onSelectProduct,
@@ -172,6 +185,10 @@ export const Collection = memo<CollectionProps>(({
                 >
                   <img
                     src={product.images[0]}
+                    srcSet={getSrcSet(product.images[0])}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    width={600}
+                    height={800}
                     alt={product.name}
                     className="w-full h-full object-cover object-center filter contrast-105 brightness-95 transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     loading="lazy"
@@ -182,10 +199,15 @@ export const Collection = memo<CollectionProps>(({
                   {product.images[1] && (
                     <img
                       src={product.images[1]}
+                      srcSet={getSrcSet(product.images[1])}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      width={600}
+                      height={800}
                       alt={`${product.name} alternate view`}
                       className="absolute inset-0 w-full h-full object-cover object-center filter contrast-105 brightness-95 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out pointer-events-none group-hover:scale-[1.03]"
                       loading="lazy"
                       decoding="async"
+                      onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
                     />
                   )}
 

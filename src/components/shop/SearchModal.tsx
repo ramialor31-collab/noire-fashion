@@ -135,6 +135,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ products, onSelectProd
                         src={product.images[0]}
                         alt={product.name}
                         className="w-14 aspect-[3/4] object-cover rounded-xs border border-white/10 shrink-0"
+                        loading="lazy"
+                        decoding="async"
+                        onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
                       />
                       <div>
                         <span className="text-[10px] font-mono text-noir-400 uppercase tracking-wider block">

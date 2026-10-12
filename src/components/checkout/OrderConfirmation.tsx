@@ -99,6 +99,9 @@ export const OrderConfirmation: React.FC<OrderConfirmationProps> = ({
                   src={item.image}
                   alt={item.name}
                   className="w-10 h-12 object-cover bg-noir-950 border border-white/10 shrink-0"
+                  loading="lazy"
+                  decoding="async"
+                  onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }}
                 />
                 <div>
                   <span className="text-white font-sans font-medium block">{item.name}</span>
